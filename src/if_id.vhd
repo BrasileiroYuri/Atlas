@@ -5,8 +5,12 @@ use IEEE.numeric_std.all;
 entity if_id is
   port (
   clk, we : in std_logic;
+
   in_instr : in std_logic_vector(31 downto 0);
   out_instr : out std_logic_vector(31 downto 0);
+
+  next_pc_in  : in std_logic_vector(31 downto 0)
+  next_pc_out  : out std_logic_vector(31 downto 0)
   );
 end entity if_id;
 
