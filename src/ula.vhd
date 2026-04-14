@@ -16,5 +16,4 @@ architecture rtl of ula is
 begin
 
 
-
 end architecture rtl;
