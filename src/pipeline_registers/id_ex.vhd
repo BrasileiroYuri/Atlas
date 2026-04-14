@@ -9,7 +9,8 @@ entity id_ex is
     -- It's missing control signals!
 
     imm : in std_logic_vector(31 downto 0);
-    rs1, rs2, rd : in std_logic_vector(31 downto 0);
+    rs1_value, rs2_value : in std_logic_vector(31 downto 0);
+    rd : in std_logic_vector(31 downto 0);
 
     pcplus4 : in std_logic_vector(31 downto 0)
   );
