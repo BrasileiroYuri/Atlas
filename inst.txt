@@ -1,0 +1,56 @@
+A quick context:
+In our homework, we have to implement a Pipelined RISC processor with Hazard handling (Data and Control) using the following instruction set:
+
+ADD, SUB, CMP, NOT, XOR, AND, OR, LD, ST, J, JN and JZ.
+
+Therefore, as RISC lovers, we choose RISC-V RV32I as our RISC processor.
+
+However, the RISC-V doesn't have instructions like NOT, CMP, J, J, JN and JZ with the same name or meaning. So, we made some ISA decisions to fulfill our homework requirements while still implementing RV32I in the same project.
+
+R-Type:
+funct7 (31:25) | rs2 (24:20) | rs1 (19:15) | funct3 (14:12) | rd (11:7) | op (6:0)
+
+ADD -> add rd, rs1, rs2 | 0000000 - rs2 - rs1 - 000 - rd - 0110011
+SUB -> sub rd, rs1, rs2 | 0100000 - rs2 - rs1 - 000 - rd - 0110011
+AND -> and rd, rs1, rs2 | 0000000 - rs2 - rs1 - 111 - rd - 0110011
+OR  -> or  rd, rs1, rs2 | 0000000 - rs2 - rs1 - 110 - rd - 0110011
+XOR -> xor rd, rs1, rs2 | 0000000 - rs2 - rs1 - 100 - rd - 0110011
+
+Special case:
+CMP -> sub rd, rs1, rs2 | 0100000 - rs2 - rs1 - 000 - rd - 0110011
+In this case, we perfom a comparison by subtracting rs2 from rs1.
+If rd == 0, the operands are equal.
+****
+
+I-Type:
+imm11:0 (31:20) | rs1 (19:15) | funct3 (14:12) | rd (11:7) | op (6:0)
+
+LD  ->  lw rd, imm(rs1) | imm11:0 - rs1 - 010 - rd | 0000011
+
+Special case:
+NOT -> xori rd, rs1, -1 | 111111111111 - rs1 - 100 - rd - 0010011
+Here, we implement the NOT operation as a XOR immediate with -1 (0xFFFFFFFF).
+****
+funct7 inst31:25 1000000
+
+S-Type:
+imm11:5 (31:25) | rs2 (24:20) | rs1 (19:15) | funct3 (14:12) | imm4:0 (11:7) | op (6:0)
+
+ST  -> sw rs2, imm(rs1) | imm11:5 - rs2 - rs1 - 010 - imm4:0 - 0100011
+
+J-Type:
+imm20 (31) | imm10:1 (30:21) | imm11 (20) | imm19:12 (19:12) | rd (11:7) | op (6:0)
+J -> jal rd, imm | imm20 - imm10:1 - imm11 - imm19:12 - rd - 1101111
+We are just perfoming a renaming...
+
+B-Type:
+imm12 (31) | imm10:5 (30:25) | rs2 (24:20) | rs1 (19:15) | funct3 (14:12) | imm4:1 (11:8) | imm11 (7) | op (6:0)
+
+JN -> blt rs1, x0, imm | imm12 - imm10:5 - rs2 - rs1 - 100 - imm4:1 - imm11 - 1100011
+JZ -> beq rs1, x0, imm | imm12 - imm10:5 - rs2 - rs1 - 000 - imm4:1 - imm11 - 1100011
+****
+011
+010
+- ganhar bits no imm?
+
+📟
