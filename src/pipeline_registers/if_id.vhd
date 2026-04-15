@@ -4,7 +4,8 @@ use IEEE.numeric_std.all;
 
 entity if_id is
   port (
-  clk, we : in std_logic; -- When we = '0' we have a stall.
+  clk, rst : in std_logic;
+  we : in std_logic; -- When we = '0' we have a stall.
 
   in_instr : in std_logic_vector(31 downto 0);
   next_pc_in  : in std_logic_vector(31 downto 0);
@@ -24,9 +25,12 @@ begin
   process(clk)
   begin
   if rising_edge(clk) then
-    if we = '1' then
-        mem_instr   <= in_instr;
-        mem_next_pc <= next_pc_in;
+    if rst = '1' then
+      next_pc_out <= (others => '0');
+      out_instr <= (others => '0');
+    elsif we = '1' then
+      mem_instr   <= in_instr;
+      mem_next_pc <= next_pc_in;
     end if;
   end if;
 end process;
