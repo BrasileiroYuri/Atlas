@@ -7,7 +7,7 @@ entity if_stage is
     clk, rst         : in  std_logic;
   --- we're not using this yet
     we          : in  std_logic;                      -- vem da hazard_unit
-    branch      : in  std_logic;                      -- taken ou not taken
+    branch      : in  std_logic;                      -- taken or not taken
     branch_addr : in  std_logic_vector(31 downto 0);  -- endereço do branch
   ---
     pcplus4     : out std_logic_vector(31 downto 0);

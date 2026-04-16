@@ -13,7 +13,7 @@ architecture rtl of instruction_memory is
 
   -- For now, we are using only 32 instructions.
   type instruct_mem is array (0 to 31) of std_logic_vector(31 downto 0);
-  signal mem : instruct_mem := (others => '0');
+signal mem : instruct_mem := (others => (others => '0'));
 begin
 
 instruction <= mem(to_integer(unsigned(addr(6 downto 2))));
