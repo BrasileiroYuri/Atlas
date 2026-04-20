@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.all;
 entity se_unit is
   port (
     in_instr : in  std_logic_vector(31 downto 0);
-    -- Futuramente: immsrc : in std_logic_vector(1 downto 0);
+    --immsrc : in std_logic_vector(1 downto 0);
     imm      : out std_logic_vector(31 downto 0)
   );
 end entity se_unit;
@@ -14,16 +14,10 @@ architecture rtl of se_unit is
 begin
   opcode <= in_instr(6 downto 0);
 
-  -- Tudo em UM ÚNICO PROCESSO para evitar o Delta Delay
   process(in_instr, opcode)
-    -- Declaramos uma VARIÁVEL (atualiza na hora!)
     variable v_immsrc : std_logic_vector(1 downto 0);
   begin
-
-    -- ==========================================
-    -- BLOCO 1: O "Gerente" (Decisão)
-    -- Note o uso de ':=' em vez de '<='
-    -- ==========================================
+--Fake UC
     case opcode is
       when "0000011" | "0010011" => v_immsrc := "00"; -- I-Type
       when "0100011"             => v_immsrc := "01"; -- S-Type
@@ -31,13 +25,9 @@ begin
       when "1101111"             => v_immsrc := "11"; -- J-Type
       when others                => v_immsrc := "00";
     end case;
-
-    -- ==========================================
-    -- BLOCO 2: O "Operário" (Montagem)
-    -- Lê a variável 'v_immsrc' instantaneamente
-    -- ==========================================
+-- SE_UNIT
     if opcode = "0110011" then
-        imm <= (others => '0'); -- Força zero para R-Type
+        imm <= (others => '0');
     else
         case v_immsrc is
           when "00" =>
