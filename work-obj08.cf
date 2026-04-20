@@ -1,7 +1,13 @@
 v 4
+file . "src/testbenchs/tb_ula.vhd" "dd33c018f09eb6baec3f8bce61906c1c17ceafb8" "20260420200756.300":
+  entity tb_ula at 1( 0) + 0 on 31;
+  architecture sim of tb_ula at 8( 107) + 0 on 32;
 file . "src/architectural_components/se_unit.vhd" "b2ab089e694d472988d64b1f13e6aff6f28f169b" "20260419234759.912":
   entity se_unit at 1( 0) + 0 on 25;
   architecture rtl of se_unit at 12( 258) + 0 on 26;
 file . "src/testbenchs/tb_se_unit.vhd" "a2f614aa2d7109d1450bee6a001989af484710e6" "20260419234803.763":
   entity tb_se_unit at 1( 0) + 0 on 27;
   architecture sim of tb_se_unit at 8( 104) + 0 on 28;
+file . "src/architectural_components/ula.vhd" "2475c098928daa7e3394b0870d363643a72b5740" "20260420200748.340":
+  entity ula at 1( 0) + 0 on 29;
+  architecture rtl of ula at 14( 301) + 0 on 30;
