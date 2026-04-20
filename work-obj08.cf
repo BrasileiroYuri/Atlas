@@ -1,0 +1,7 @@
+v 4
+file . "src/architectural_components/se_unit.vhd" "b2ab089e694d472988d64b1f13e6aff6f28f169b" "20260419234759.912":
+  entity se_unit at 1( 0) + 0 on 25;
+  architecture rtl of se_unit at 12( 258) + 0 on 26;
+file . "src/testbenchs/tb_se_unit.vhd" "a2f614aa2d7109d1450bee6a001989af484710e6" "20260419234803.763":
+  entity tb_se_unit at 1( 0) + 0 on 27;
+  architecture sim of tb_se_unit at 8( 104) + 0 on 28;
