@@ -1,4 +1,7 @@
 v 4
+file . "src/testbenchs/tb_alu_decoder.vhd" "1859036a20f9e66db25e9f929b18612690b5a01b" "20260421182701.712":
+  entity tb_aludec at 1( 0) + 0 on 43;
+  architecture sim of tb_aludec at 7( 87) + 0 on 44;
 file . "src/testbenchs/tb_ula.vhd" "dd33c018f09eb6baec3f8bce61906c1c17ceafb8" "20260420200756.300":
   entity tb_ula at 1( 0) + 0 on 31;
   architecture sim of tb_ula at 8( 107) + 0 on 32;
@@ -11,3 +14,6 @@ file . "src/testbenchs/tb_se_unit.vhd" "a2f614aa2d7109d1450bee6a001989af484710e6
 file . "src/architectural_components/ula.vhd" "2475c098928daa7e3394b0870d363643a72b5740" "20260420200748.340":
   entity ula at 1( 0) + 0 on 29;
   architecture rtl of ula at 14( 301) + 0 on 30;
+file . "src/control/alu_decoder.vhd" "21ef93c2cd84e68efcae5be1a5271ed6f4386850" "20260421182658.730":
+  entity aludec at 1( 0) + 0 on 41;
+  architecture rtl of aludec at 15( 312) + 0 on 42;
