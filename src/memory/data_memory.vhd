@@ -5,7 +5,8 @@ use IEEE.numeric_std.all;
 entity data_memory is
   port (
   clk, rst, we : in std_logic;
-  addr, input, output : in std_logic_vector(31 downto 0)
+  addr, input : in std_logic_vector(31 downto 0);
+  output : out std_logic_vector(31 downto 0)
   );
 end entity data_memory;
 
@@ -17,15 +18,16 @@ architecture rtl of data_memory is
 begin
 
   process(clk)
+  begin
     if rising_edge(clk) then
       if rst = '1' then
         mem <= (others => (others => '0'));
       elsif we = '1' then
-        mem(to_integer(unsigned(addr))) <= input;
+        mem(to_integer(unsigned(addr(4 downto 0)))) <= input;
       end if;
     end if;
   end process;
 
-  output <= mem(to_integer(unsigned(addr)));
+  output <= mem(to_integer(unsigned(addr(4 downto 0))));
 
 end architecture rtl;
