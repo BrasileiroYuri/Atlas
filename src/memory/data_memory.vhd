@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 entity data_memory is
   port (
-  clk, rst, we : in std_logic;
+  clk, rst, MemWriteM : in std_logic;
   addr, input : in std_logic_vector(31 downto 0);
   output : out std_logic_vector(31 downto 0)
   );
@@ -22,12 +22,14 @@ begin
     if rising_edge(clk) then
       if rst = '1' then
         mem <= (others => (others => '0'));
-      elsif we = '1' then
-        mem(to_integer(unsigned(addr(4 downto 0)))) <= input;
+      elsif MemWriteM = '1' then
+
+        mem(to_integer(unsigned(addr(6 downto 2)))) <= input;  -- escrita
+
       end if;
     end if;
   end process;
 
-  output <= mem(to_integer(unsigned(addr(4 downto 0))));
+  output <= mem(to_integer(unsigned(addr(6 downto 2))));
 
 end architecture rtl;
