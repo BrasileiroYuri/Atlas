@@ -4,32 +4,19 @@ use IEEE.std_logic_1164.all;
 entity se_unit is
   port (
     in_instr : in  std_logic_vector(31 downto 0);
-    --immsrc : in std_logic_vector(1 downto 0);
+    ImmSrc : in std_logic_vector(1 downto 0);
     imm      : out std_logic_vector(31 downto 0)
   );
 end entity se_unit;
 
 architecture rtl of se_unit is
-  signal opcode : std_logic_vector(6 downto 0);
-begin
-  opcode <= in_instr(6 downto 0);
-
-  process(in_instr, opcode)
-    variable v_immsrc : std_logic_vector(1 downto 0);
   begin
---Fake UC
-    case opcode is
-      when "0000011" | "0010011" => v_immsrc := "00"; -- I-Type
-      when "0100011"             => v_immsrc := "01"; -- S-Type
-      when "1100011"             => v_immsrc := "10"; -- B-Type
-      when "1101111"             => v_immsrc := "11"; -- J-Type
-      when others                => v_immsrc := "00";
-    end case;
--- SE_UNIT
-    if opcode = "0110011" then
+  process(in_instr,ImmSrc)
+  begin
+    if ImmSrc = "0110011" then
         imm <= (others => '0');
     else
-        case v_immsrc is
+        case ImmSrc is
           when "00" =>
             imm <= (31 downto 12 => in_instr(31)) & in_instr(31 downto 20);
           when "01" =>
