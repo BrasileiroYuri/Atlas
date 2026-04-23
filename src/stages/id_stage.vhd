@@ -37,23 +37,19 @@ begin
     R1 => rs1,
     R2 => rs2,
     Out1 => r1_out,
-    Out2 => r2_out,
+    Out2 => r2_out
     );
 
 
   SEU : entity work.se_unit -- Sign-extend unit
     port map(
     in_instr => in_instruction,
-    imm => imm_out,
-    )
+    imm => imm_out
+    );
 
   process(clk)
   begin
     if rising_edge(clk) then
-      if
-
     end if;
   end process ;
-
-
 end architecture rtl;

@@ -1,0 +1,12 @@
+v 4
+file . "../memory/data_memory.vhd" "56b21bf93043e11c5c796302928aa324d35044d8" "20260423190646.197":
+  entity data_memory at 1( 0) + 0 on 19;
+  architecture rtl of data_memory at 13( 264) + 0 on 20;
+file . "../pipeline_registers/mem_wb.vhd" "05e54b25938199f40fe91d59a72c8804d414fa3e" "20260423012152.346":
+  entity mem_wb at 1( 0) + 0 on 13;
+file . "wb_stage.vhd" "3ac685c4a36b22ef6d566a3a9fc0c179fb8e46dd" "20260423010841.724":
+  entity wb_stage at 1( 0) + 0 on 11;
+  architecture rtl of wb_stage at 21( 537) + 0 on 12;
+file . "mem_stage.vhd" "1d99163d9f7c7c1a2f7c609d8a7815fb627fd8da" "20260423190807.220":
+  entity mem_stage at 1( 0) + 0 on 23;
+  architecture rtl of mem_stage at 33( 879) + 0 on 24;
