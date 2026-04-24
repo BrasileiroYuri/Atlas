@@ -5,34 +5,44 @@ use IEEE.numeric_std.all;
 entity if_id is
   port (
   clk, rst : in std_logic;
+
   we : in std_logic; -- When we = '0' we have a stall.
 
-  in_instr : in std_logic_vector(31 downto 0);
-  next_pc_in  : in std_logic_vector(31 downto 0);
+  InstrF : in std_logic_vector(31 downto 0);
+  InstrD : out std_logic_vector(31 downto 0);
 
-  next_pc_out  : out std_logic_vector(31 downto 0);
-  out_instr : out std_logic_vector(31 downto 0)
+  PCF  : in std_logic_vector(31 downto 0);
+  PCD  : out std_logic_vector(31 downto 0);
+
+  PCPlus4F : in std_logic_vector(31 downto 0);
+  PCPlus4D : out std_logic_vector(31 downto 0)
   );
 end entity if_id;
 
 architecture rtl of if_id is
-  signal mem_instr   : std_logic_vector(31 downto 0);
-  signal mem_next_pc : std_logic_vector(31 downto 0);
+
+  signal Instr   : std_logic_vector(31 downto 0);
+  signal PC : std_logic_vector(31 downto 0);
+  signal PCPlus4 : std_logic_vector(31 downto 0);
+
 begin
   process(clk)
   begin
     if rising_edge(clk) then
       if rst = '1' then
-        mem_instr   <= (others => '0');  -- reseta o registrador interno
-        mem_next_pc <= (others => '0');  -- reseta o registrador interno
+        Instr   <= (others => '0');  -- reseta o registrador interno
+        PC <= (others => '0');  -- reseta o registrador interno
+        PCPlus4 <= (others => '0');  -- reseta o registrador interno
       elsif we = '1' then
-        mem_instr   <= in_instr;
-        mem_next_pc <= next_pc_in;
+        Instr <= InstrF;
+        PC <= PCF;
+        PCPlus4 <= InstrF;
       end if;
     end if;
   end process;
 
-  out_instr   <= mem_instr;
-  next_pc_out <= mem_next_pc;
+  InstrD   <= Instr;
+  PCD <= PC;
+  PCPlus4D<= PCPlus4;
 
 end architecture rtl;
