@@ -4,8 +4,8 @@ use IEEE.numeric_std.all;
 
 entity instruction_memory is
   port (
-  addr : in std_logic_vector(31 downto 0);
-  instruction : out std_logic_vector(31 downto 0)
+  PCF : in std_logic_vector(31 downto 0);
+  InstrF : out std_logic_vector(31 downto 0)
   );
 end entity instruction_memory;
 
@@ -16,5 +16,5 @@ architecture rtl of instruction_memory is
 signal mem : instruct_mem := (others => (others => '0'));
 begin
 
-instruction <= mem(to_integer(unsigned(addr(6 downto 2))));
+InstrF <= mem(to_integer(unsigned(PCF(6 downto 2))));
 end architecture rtl;
