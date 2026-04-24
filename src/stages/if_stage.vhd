@@ -4,23 +4,21 @@ use IEEE.numeric_std.all;
 
 entity if_stage is
   port (
-    clk, rst         : in  std_logic;
-  --- we're not using this yet
-    we          : in  std_logic;                      -- vem da hazard_unit
-    branch      : in  std_logic;                      -- taken or not taken
-    branch_addr : in  std_logic_vector(31 downto 0);  -- endereço do branch
-  ---
-    pcplus4     : out std_logic_vector(31 downto 0);
-    out_instr   : out std_logic_vector(31 downto 0)
+    clk, rst,we         : in  std_logic;
+
+    PCSrcE      : in  std_logic;                      -- taken or not taken
+    PCTargetE : in  std_logic_vector(31 downto 0);  -- endereço do branch
+    PCPlus4F     : out std_logic_vector(31 downto 0);
+    PCF     : out std_logic_vector(31 downto 0);
+    InstrF   : out std_logic_vector(31 downto 0)
   );
 end entity if_stage;
 
 architecture rtl of if_stage is
 
-  signal pc_plus4_internal : std_logic_vector(31 downto 0); -- Holds  PC + 4.
-  signal current_pc   : std_logic_vector(31 downto 0); -- Current PC value.
-  signal next_pc      : std_logic_vector(31 downto 0); -- Signal that should be BRANCH or PC+4
-  signal raw_instr    : std_logic_vector(31 downto 0); -- Instruction fetched memory.
+  signal PCPlus4 : std_logic_vector(31 downto 0); -- Holds  PC + 4.
+  signal PCF_in: std_logic_vector(31 downto 0); -- Signal that should be BRANCH or PC+4
+  signal PCF_out   : std_logic_vector(31 downto 0); -- Current PC value.
 
 begin
 
@@ -29,20 +27,29 @@ begin
       clk      => clk,
       rst      => rst,
       we       => we,
-      addr_in  => next_pc,
-      addr_out => current_pc
+      PCF_in  => PCF_in,
+      PCF_out => PCF_out
     );
 
   IM : entity work.instruction_memory
     port map(
-      addr        => current_pc,
-      instruction => raw_instr
+      PCF        => PCF_out,
+      InstrF => InstrF
     );
 
-  pc_plus4_internal <= std_logic_vector(unsigned(current_pc) + 4);
+    process(PCSrcE, PCPlus4, PCTargetE)
+    begin
+      case PCSrcE is
+        when '1' =>
+          PCF_in <=PCTargetE;
+        when others =>
+          PCF_in <=PCPlus4;
+      end case;
+    end process;
 
-  next_pc   <= pc_plus4_internal;
-  pcplus4   <= pc_plus4_internal;
-  out_instr <= raw_instr;
+
+  PCF<= PCF_out;
+  PCPlus4 <= std_logic_vector(unsigned(PCF_out) + 4);
+  PCPlus4F   <= PCPlus4;
 
 end architecture rtl;
