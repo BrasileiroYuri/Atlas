@@ -4,10 +4,13 @@ use IEEE.numeric_std.all;
 
 entity ula is
   port (
-    R1, R2     : in  std_logic_vector(31 downto 0);
-    ALUControl : in  std_logic_vector(2 downto 0);
-    ALUResult  : out std_logic_vector(31 downto 0);
-    Zero       : out std_logic
+    SrcAE     : in  std_logic_vector(31 downto 0);
+    SrcBE : in std_logic_vector(31 downto 0);
+
+    ALUControlE : in  std_logic_vector(2 downto 0);
+
+    ALUResultE  : out std_logic_vector(31 downto 0);
+    ZeroE       : out std_logic
   );
 end entity ula;
 
@@ -15,21 +18,21 @@ architecture rtl of ula is
   signal result_internal : std_logic_vector(31 downto 0);
 begin
 
-  process (R1, R2, ALUControl)
+  process (SrcAE, SrcBE, ALUControlE)
   begin
-    case ALUControl is
+    case ALUControlE is
       when "000" =>
-        result_internal <= std_logic_vector(signed(R1) + signed(R2));
+        result_internal <= std_logic_vector(signed(SrcAE) + signed(SrcBE));
       when "001" =>
-        result_internal <= std_logic_vector(signed(R1) - signed(R2));
+        result_internal <= std_logic_vector(signed(SrcAE) - signed(SrcBE));
       when "010" =>
-        result_internal <= R1 and R2;
+        result_internal <= SrcAE and SrcBE;
       when "011" =>
-        result_internal <= R1 or R2;
+        result_internal <= SrcAE or SrcBE;
       when "100" =>
-        result_internal <= R1 xor R2;
+        result_internal <= SrcAE xor SrcBE;
       when "101" =>
-        if signed(R1) < signed(R2) then
+        if signed(SrcAE) < signed(SrcBE) then
           result_internal <= x"00000001";
         else
           result_internal <= x"00000000";
@@ -39,7 +42,7 @@ begin
     end case;
   end process;
 
-  ALUResult <= result_internal;
-  Zero <= '1' when result_internal = x"00000000" else '0';
+  ALUResultE <= result_internal;
+  ZeroE <= '1' when result_internal = x"00000000" else '0';
 
 end architecture rtl;

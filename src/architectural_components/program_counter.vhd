@@ -7,9 +7,8 @@ entity program_counter is
     clk, rst      : in  std_logic;
     we       : in  std_logic;
 
-    addr_in  : in  std_logic_vector(31 downto 0);
-    addr_out : out std_logic_vector(31 downto 0)
-
+    PCF_in  : in  std_logic_vector(31 downto 0);
+    PCF_out : out std_logic_vector(31 downto 0)
   );
 end entity program_counter;
 
@@ -23,11 +22,11 @@ begin
       if rst = '1' then
         mem <= (others => '0');
       elsif we = '1' then
-        mem <= addr_in;
+        mem <= PCF_in;
       end if;
     end if;
   end process;
 
-  addr_out <= mem;
+  PCF_out <= mem;
 
 end architecture;
