@@ -37,7 +37,7 @@ architecture rtl of cpu is
   signal s_ResultSrcE_out : std_logic_vector(1 downto 0);
   signal s_RdE_out : std_logic_vector(4 downto 0);
   signal s_PCPlusE_out, s_ALUResultE, s_WriteDataE, s_PCTargetE : std_logic_vector(31 downto 0);
-  signal s_SELMux : std_logic; -- O sinal de PULO que volta para o IF!
+  signal s_SELMux : std_logic; 
 
   -- MEMORY (MEM)
   signal s_RegWriteM, s_MemWriteM : std_logic;
@@ -56,17 +56,13 @@ architecture rtl of cpu is
   signal s_RdW : std_logic_vector(4 downto 0);
   signal s_ReadDataW, s_ALUResultW, s_PCPlus4W : std_logic_vector(31 downto 0);
 
-  -- Fios Finais de Retorno (Voltam para o ID)
+  -- Retorno Final ID
   signal s_RdW_out : std_logic_vector(4 downto 0);
   signal s_RegWriteW_out : std_logic;
   signal s_ResultW : std_logic_vector(31 downto 0);
 
 
 begin
-
-  --
-  -- 2. INSTANCIAÇÃO DA FÁBRICA
-
 
   -- ESTÁGIO 1: INSTRUCTION FETCH (IF)
   IF_STG: entity work.if_stage port map(
@@ -93,14 +89,14 @@ begin
     PCPlus4D   => s_PCPlus4D
   );
 
-  -- >>> ESTÁGIO 2: INSTRUCTION DECODE (ID) <<<
+  -- >>> ESTÁGIO 2: INSTRUCTION DECODE (ID) 
   ID_STG: entity work.id_stage port map(
     clk          => clk,
     rst          => rst,
     InstrD_in    => s_InstrD,
     PCD_in       => s_PCD,
     PCPlus4D_in  => s_PCPlus4D,
-    -- Cabos de Retorno do Writeback
+    -- WriteBack Retorno
     RegWriteW    => s_RegWriteW_out,
     RdW          => s_RdW_out,
     ResultW      => s_ResultW,
