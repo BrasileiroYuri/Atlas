@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-
+--TODO: assembly
 entity instruction_memory is
   port (
   PCF : in std_logic_vector(31 downto 0);
