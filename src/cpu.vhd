@@ -10,11 +10,9 @@ end entity cpu;
 
 architecture rtl of cpu is
 
-  -- ==============================================================================
-  -- 1. SINAIS DE INTERLIGAÇÃO (Organizados por Estágio)
-  -- ==============================================================================
+  -- 1. SINAIS DE INTERLIGAÇÃO
 
-  -- Fios Globais (Happy Path: Esteiras sempre a andar)
+  -- Fios Globais
   signal s_pipeline_we : std_logic := '1';
 
   -- FETCH (IF)
@@ -66,17 +64,17 @@ architecture rtl of cpu is
 
 begin
 
-  -- ==============================================================================
-  -- 2. INSTANCIAÇÃO DA FÁBRICA (Estágios e Esteiras)
-  -- ==============================================================================
+  --
+  -- 2. INSTANCIAÇÃO DA FÁBRICA
 
-  -- >>> ESTÁGIO 1: INSTRUCTION FETCH (IF) <<<
+
+  -- ESTÁGIO 1: INSTRUCTION FETCH (IF)
   IF_STG: entity work.if_stage port map(
     clk         => clk,
     rst         => rst,
     we          => s_pipeline_we,
-    PCSrcE      => s_SELMux,      -- O Fio que vem do EX para dizer se salta
-    PCTargetE   => s_PCTargetE,   -- O endereço alvo calculado no EX
+    PCSrcE      => s_SELMux,
+    PCTargetE   => s_PCTargetE,
     PCPlus4F    => s_PCPlus4F,
     PCF         => s_PCF,
     InstrF      => s_InstrF
@@ -142,7 +140,7 @@ begin
     PCPlus4D     => s_PCPlus4D_out, PCPlus4E     => s_PCPlus4E
   );
 
-  -- >>> ESTÁGIO 3: EXECUTE (EX) <<<
+  -- >>> ESTÁGIO 3: EXECUTE (EX)
   EX_STG: entity work.ex_stage port map(
     RegWriteE_in   => s_RegWriteE,     RegWriteE_out   => s_RegWriteE_out,
     ResultSrcE_in  => s_ResultSrcE,    ResultSrcE_out  => s_ResultSrcE_out,
@@ -177,7 +175,7 @@ begin
     PCPlus4E     => s_PCPlusE_out,     PCPlus4M   => s_PCPlus4M
   );
 
-  -- >>> ESTÁGIO 4: MEMORY ACCESS (MEM) <<<
+  -- >>> ESTÁGIO 4: MEMORY ACCESS (MEM)
   MEM_STG: entity work.mem_stage port map(
     clk             => clk,
     rst             => rst,
@@ -204,16 +202,16 @@ begin
     PCPlus4M     => s_PCPlus4M_out,    PCPlus4W   => s_PCPlus4W
   );
 
-  -- >>> ESTÁGIO 5: WRITEBACK (WB) <<<
+  -- >>> ESTÁGIO 5: WRITEBACK (WB)
   WB_STG: entity work.wb_stage port map(
     RdW_in        => s_RdW,
     RegWriteW_in  => s_RegWriteW,
     ResultSrcW    => s_ResultSrcW,
     ReadDataW     => s_ReadDataW,
     PCPlus4W      => s_PCPlus4W,
-    ALUResultM    => s_ALUResultW, -- Atenção: Porta chama-se M, mas leva o sinal W!
+    ALUResultM    => s_ALUResultW, -- M p/ W
 
-    -- Saídas finais que dão a volta até ao ID
+    -- IDback
     RdW_out       => s_RdW_out,
     RegWriteW_out => s_RegWriteW_out,
     ResultW       => s_ResultW
