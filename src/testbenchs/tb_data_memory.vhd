@@ -46,10 +46,10 @@ begin
         wait until rising_edge(clk);
         wait for 1 ns;
         rst <= '0';
-        
+
         addr <= std_logic_vector(to_unsigned(5, 32)); -- Verifica endereço 5
         wait for 1 ns;
-        assert output = x"00000000" 
+        assert output = x"00000000"
             report "FAIL: Memoria nao foi zerada no reset!" severity error;
         if output /= x"00000000" then v_success := false; end if;
 
@@ -57,11 +57,11 @@ begin
         addr <= std_logic_vector(to_unsigned(10, 32)); -- Endereço 10
         input <= x"CAFEBABE";
         wait until rising_edge(clk);
-        
+
         we <= '0'; -- Desativa escrita
         wait for 1 ns;
-        
-        assert output = x"CAFEBABE" 
+
+        assert output = x"CAFEBABE"
             report "FAIL: Erro na escrita/leitura do endereco 10" severity error;
         if output /= x"CAFEBABE" then v_success := false; end if;
 
@@ -70,14 +70,14 @@ begin
         wait until rising_edge(clk);
         wait for 1 ns;
 
-        assert output = x"CAFEBABE" 
+        assert output = x"CAFEBABE"
             report "FAIL: Dado alterado com Write Enable em '0'!" severity error;
         if output /= x"CAFEBABE" then v_success := false; end if;
 
         addr <= std_logic_vector(to_unsigned(5, 32));
         wait for 1 ns;
-        
-        assert output = x"00000000" 
+
+        assert output = x"00000000"
             report "FAIL: Leitura do endereco 5 retornou lixo!" severity error;
         if output /= x"00000000" then v_success := false; end if;
 

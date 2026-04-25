@@ -1,10 +1,5 @@
-[library]
-work = [
-  "src/*.vhd",
-  "src/architectural_components/*.vhd",
-  "src/control/*.vhd",
-  "src/memory/*.vhd",
-  "src/pipeline_registers/*.vhd",
-  "src/stages/*.vhd",
-  "src/testbenchs/*.vhd"
+[libraries]
+defaultlib.files = [
+  "*.vhd",
+  "src/**/*.vhd"
 ]

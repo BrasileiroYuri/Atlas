@@ -2,54 +2,94 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-
 entity id_stage is
   port (
-  clk, rst : in std_logic;
-  we : in std_logic;
+    clk, rst : in std_logic;
 
-  in_instruction : in std_logic_vector(31 downto 0);
+    -- ENTRADAS IF/ID
+    InstrD_in   : in std_logic_vector(31 downto 0);
+    PCD_in      : in std_logic_vector(31 downto 0);
+    PCPlus4D_in : in std_logic_vector(31 downto 0);
 
-  rs1, rs2 : in std_logic_vector(31 downto 0);
-  rd : in std_logic_vector(31 downto 0);
+    -- ENTRADAS DE RETORNO MEM/WB
+    RegWriteW   : in std_logic;
+    RdW         : in std_logic_vector(4 downto 0);
+    ResultW     : in std_logic_vector(31 downto 0);
 
-  pcplus4_in : in std_logic_vector(31 downto 0);
-  pcplus4_out : out std_logic_vector(31 downto 0);
+    -- SAÍDAS DE CONTROLE ID/EX
+    RegWriteD   : out std_logic;
+    ResultSrcD  : out std_logic_vector(1 downto 0);
+    MemWriteD   : out std_logic;
+    JumpD       : out std_logic;
+    BranchD     : out std_logic;
+    ALUControlD : out std_logic_vector(2 downto 0);
+    ALUSrcD     : out std_logic;
 
-  write_addr, write_data : in std_logic_vector(31 downto 0) -- Used to write on register file.
+    -- SAÍDAS DE DADOS ID/EX
+    ImmExtD      : out std_logic_vector(31 downto 0);
+    RD1D         : out std_logic_vector(31 downto 0);
+    RD2D         : out std_logic_vector(31 downto 0);
+    PCD_out      : out std_logic_vector(31 downto 0);
+    PCPlus4D_out : out std_logic_vector(31 downto 0);
+
+    -- [TODO: HAZARD UNIT] Endereços extraídos
+    RdD          : out std_logic_vector(4 downto 0)
+    -- Rs1D         : out std_logic_vector(4 downto 0); -- Descomente no futuro
+    -- Rs2D         : out std_logic_vector(4 downto 0)  -- Descomente no futuro
   );
 end entity id_stage;
 
-
 architecture rtl of id_stage is
 
-  signal r1_out, r2_out : std_logic_vector(31 downto 0);
-  signal imm_out : std_logic_vector(31 downto 0);
+  signal s_ImmSrc : std_logic_vector(1 downto 0);
 
 begin
 
-  RG: entity work.register_file -- Register File
+  -- Passagens diretas
+  PCD_out      <= PCD_in;
+  PCPlus4D_out <= PCPlus4D_in;
+
+  -- Fatiamento para a frente
+  RdD  <= InstrD_in(11 downto 7);
+  
+  -- [TODO: HAZARD UNIT] Descomente as linhas abaixo no futuro
+  -- Rs1D <= InstrD_in(19 downto 15);
+  -- Rs2D <= InstrD_in(24 downto 20);
+
+  CU: entity work.control_unit
     port map(
-    clk =>clk,
-    we => we,
-    in_addr => write_addr,
-    in_data => write_data,
-    R1 => rs1,
-    R2 => rs2,
-    Out1 => r1_out,
-    Out2 => r2_out
+      op         => InstrD_in(6 downto 0),
+      funct3     => InstrD_in(14 downto 12),
+      funct7b5   => InstrD_in(30),
+
+      ResultSrc  => ResultSrcD,
+      MemWrite   => MemWriteD,
+      Branch     => BranchD,
+      ALUSrc     => ALUSrcD,
+      RegWrite   => RegWriteD,
+      Jump       => JumpD,
+      ALUControl => ALUControlD,
+
+      ImmSrc     => s_ImmSrc
     );
 
-
-  SEU : entity work.se_unit -- Sign-extend unit
+  RG: entity work.register_file
     port map(
-    in_instr => in_instruction,
-    imm => imm_out
+      clk     => clk,
+      we      => RegWriteW,
+      in_addr => RdW,
+      in_data => ResultW,
+      R1      => InstrD_in(19 downto 15),
+      R2      => InstrD_in(24 downto 20),
+      Out1    => RD1D,
+      Out2    => RD2D
     );
 
-  process(clk)
-  begin
-    if rising_edge(clk) then
-    end if;
-  end process ;
+  SEU: entity work.se_unit
+    port map(
+      in_instr => InstrD_in,
+      ImmSrc   => s_ImmSrc,
+      imm      => ImmExtD
+    );
+
 end architecture rtl;

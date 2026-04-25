@@ -23,10 +23,10 @@ begin
     begin
         report "Iniciando Testbench da Instruction Memory...";
 
-        
+
         s_addr <= std_logic_vector(to_unsigned(0, 32));
         wait for 10 ns;
-        
+
         assert s_instruction = x"00000000"
             report "FAIL: Esperava 0 no endereço 0" severity error;
         if s_instruction /= x"00000000" then v_success := false; end if;
@@ -44,7 +44,7 @@ begin
         if v_success then
             report "   SUCESSO: INSTRUCTION MEMORY VALIDADA!   ";
         end if;
-        
+
         wait;
     end process;
 
