@@ -61,7 +61,7 @@ begin
     end if;
   end process;
 
-RegWriteM <= RegWriteE;
+RegWriteM <= RegWrite;
 ResultSrcM <= ResultSrcE;
 MemWriteM <= MemWriteE;
 ALUResultM <= ALUResultE;
