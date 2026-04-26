@@ -1,5 +1,5 @@
 $date
-  Mon Apr 20 17:08:25 2026
+  Sun Apr 26 13:29:01 2026
 $end
 $version
   GHDL v0
@@ -16,17 +16,17 @@ $upscope $end
 $scope module numeric_std $end
 $upscope $end
 $scope module tb_ula $end
-$var reg 32 ! tb_r1[31:0] $end
-$var reg 32 " tb_r2[31:0] $end
-$var reg 3 # tb_alucontrol[2:0] $end
-$var reg 32 $ tb_aluresult[31:0] $end
-$var reg 1 % tb_zero $end
+$var reg 32 ! tb_srcae[31:0] $end
+$var reg 32 " tb_srcbe[31:0] $end
+$var reg 3 # tb_alucontrole[2:0] $end
+$var reg 32 $ tb_aluresulte[31:0] $end
+$var reg 1 % tb_zeroe $end
 $scope module dut $end
-$var reg 32 & r1[31:0] $end
-$var reg 32 ' r2[31:0] $end
-$var reg 3 ( alucontrol[2:0] $end
-$var reg 32 ) aluresult[31:0] $end
-$var reg 1 * zero $end
+$var reg 32 & srcae[31:0] $end
+$var reg 32 ' srcbe[31:0] $end
+$var reg 3 ( alucontrole[2:0] $end
+$var reg 32 ) aluresulte[31:0] $end
+$var reg 1 * zeroe $end
 $var reg 32 + result_internal[31:0] $end
 $upscope $end
 $upscope $end

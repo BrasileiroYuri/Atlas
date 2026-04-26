@@ -56,8 +56,8 @@ declare -a testes=(
   "tb_se_unit:src/testbenchs/tb_se_unit.vhd"
   "tb_ula:src/testbenchs/tb_ula.vhd"
   "tb_aludec:src/testbenchs/tb_alu_decoder.vhd"
+  "tb_cpu:src/testbenchs/tb_cpu.vhd"
 )
-
 for t in "${testes[@]}"; do
     entidade="${t%%:*}"
     ficheiro="${t##*:}"
@@ -65,7 +65,9 @@ for t in "${testes[@]}"; do
     echo -e "\n${BLUE}>>> Testando: $entidade <<<${NC}"
     ghdl -a --std=08 "$ficheiro" || exit 1
     ghdl -e --std=08 "$entidade" || exit 1
-    ghdl -r --std=08 "$entidade" || exit 1
+
+    # A MÁGICA ESTÁ AQUI: Salva um arquivo .vcd com o nome exato do teste!
+    ghdl -r --std=08 "$entidade" --vcd="${entidade}.vcd" || exit 1
 done
 
 echo -e "\n${GREEN}====================================================${NC}"

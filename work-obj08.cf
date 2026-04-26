@@ -1,79 +1,82 @@
 v 4
-file . "src/testbenchs/tb_alu_decoder.vhd" "92b37fa3ac69be361eba9cbe938b1f09bd006533" "20260425135105.061":
-  entity tb_aludec at 1( 0) + 0 on 61;
-  architecture sim of tb_aludec at 7( 87) + 0 on 62;
-file . "src/testbenchs/tb_se_unit.vhd" "cb29444afbf179febf97874eb12d8cefe6103c96" "20260425135104.939":
-  entity tb_se_unit at 1( 0) + 0 on 57;
-  architecture sim of tb_se_unit at 8( 115) + 0 on 58;
-file . "src/testbenchs/tb_data_memory.vhd" "43416a835c9bb953accb0b30f2ac7335e6288dba" "20260425135104.819":
-  entity tb_data_memory at 1( 0) + 0 on 53;
-  architecture sim of tb_data_memory at 8( 123) + 0 on 54;
-file . "src/testbenchs/tb_program_counter.vhd" "1e799995f66f0d86225b905bc29be2a4b5daeed0" "20260425135104.698":
-  entity tb_program_counter at 1( 0) + 0 on 49;
-  architecture sim of tb_program_counter at 8( 131) + 0 on 50;
-file . "src/stages/wb_stage.vhd" "3ac685c4a36b22ef6d566a3a9fc0c179fb8e46dd" "20260425135104.687":
-  entity wb_stage at 1( 0) + 0 on 45;
-  architecture rtl of wb_stage at 21( 537) + 0 on 46;
-file . "src/stages/ex_stage.vhd" "8b2391e2b93a18a22fe5681cbbf6b6891e992aee" "20260425135104.679":
-  entity ex_stage at 1( 0) + 0 on 41;
-  architecture rtl of ex_stage at 43( 1123) + 0 on 42;
-file . "src/stages/if_stage.vhd" "badfb22b682f99c5ff5b29d9efe4f6c64e6b4973" "20260425135104.670":
-  entity if_stage at 1( 0) + 0 on 37;
-  architecture rtl of if_stage at 17( 470) + 0 on 38;
-file . "src/pipeline_registers/ex_mem.vhd" "46c7ab33068a76a4896cf540b881718e41bb64eb" "20260425135104.659":
-  entity ex_mem at 1( 0) + 0 on 33;
-  architecture rtl of ex_mem at 30( 741) + 0 on 34;
-file . "src/pipeline_registers/if_id.vhd" "23279072db0e3fc2ab91a41bbc6da8b8a036f8bc" "20260425135104.651":
-  entity if_id at 1( 0) + 0 on 29;
-  architecture rtl of if_id at 22( 477) + 0 on 30;
-file . "src/control/alu_decoder.vhd" "21ef93c2cd84e68efcae5be1a5271ed6f4386850" "20260425135104.644":
-  entity aludec at 1( 0) + 0 on 25;
-  architecture rtl of aludec at 15( 312) + 0 on 26;
-file . "src/memory/data_memory.vhd" "4df92a84bc85b68832eae36d84ba0c2d90a31e38" "20260425135104.638":
-  entity data_memory at 1( 0) + 0 on 21;
-  architecture rtl of data_memory at 13( 264) + 0 on 22;
-file . "src/architectural_components/ula.vhd" "32e01f9f766650914c8c183c7093e8924ee5b3d6" "20260425135104.629":
-  entity ula at 1( 0) + 0 on 17;
-  architecture rtl of ula at 17( 351) + 0 on 18;
-file . "src/architectural_components/register_file.vhd" "094e35fa506c5fe55b07ab1bf823d2e52b9dc900" "20260425135104.623":
-  entity register_file at 1( 0) + 0 on 13;
-  architecture rtl of register_file at 23( 537) + 0 on 14;
-file . "src/architectural_components/program_counter.vhd" "1883782cb0dd132fd6201a78a38b68a5e54a9de6" "20260425135104.618":
-  entity program_counter at 1( 0) + 0 on 11;
-  architecture rtl of program_counter at 15( 302) + 0 on 12;
-file . "src/architectural_components/se_unit.vhd" "4bc47edb4c33fb854ab016578c9a3ca9b4420d9c" "20260425135104.626":
-  entity se_unit at 1( 0) + 0 on 15;
-  architecture rtl of se_unit at 12( 245) + 0 on 16;
-file . "src/memory/instruction_memory.vhd" "7d3470626341893437a918db4cfdc25235cd6fea" "20260425135104.634":
-  entity instruction_memory at 1( 0) + 0 on 19;
-  architecture rtl of instruction_memory at 12( 232) + 0 on 20;
-file . "src/control/main_dec.vhd" "e21f254aba7d47e97178b390c76c469008663dd2" "20260425135104.641":
-  entity maindec at 1( 0) + 0 on 23;
-  architecture rtl of maindec at 19( 452) + 0 on 24;
-file . "src/control/control_unit.vhd" "b5da9e05714fff948b4f562ed2bf055155392cce" "20260425135104.646":
-  entity control_unit at 1( 0) + 0 on 27;
-  architecture struct of control_unit at 23( 724) + 0 on 28;
-file . "src/pipeline_registers/id_ex.vhd" "842b80f4b3b12f1ae11fda01e06cb17879570561" "20260425135104.656":
-  entity id_ex at 1( 0) + 0 on 31;
-  architecture rtl of id_ex at 54( 1233) + 0 on 32;
-file . "src/pipeline_registers/mem_wb.vhd" "b2b68654deeb8ecaf93d37a2920a95f980368699" "20260425135104.665":
-  entity mem_wb at 1( 0) + 0 on 35;
-  architecture rtl of mem_wb at 30( 685) + 0 on 36;
-file . "src/stages/id_stage.vhd" "e5b1156c2f8a77c0f8fd6f086b5fcdd96233de81" "20260425135104.675":
-  entity id_stage at 1( 0) + 0 on 39;
-  architecture rtl of id_stage at 42( 1369) + 0 on 40;
-file . "src/stages/mem_stage.vhd" "1d99163d9f7c7c1a2f7c609d8a7815fb627fd8da" "20260425135104.683":
-  entity mem_stage at 1( 0) + 0 on 43;
-  architecture rtl of mem_stage at 33( 879) + 0 on 44;
-file . "src/cpu.vhd" "8744e5a861525cbc10ce10f430ed0ed13c193ac8" "20260425135104.692":
-  entity cpu at 1( 0) + 0 on 47;
-  architecture rtl of cpu at 11( 143) + 0 on 48;
-file . "src/testbenchs/tb_instruction_memory.vhd" "fbe44d1653d170c01375c0078eb73b15122eeb99" "20260425135104.761":
-  entity tb_instruction_memory at 1( 0) + 0 on 51;
-  architecture sim of tb_instruction_memory at 8( 137) + 0 on 52;
-file . "src/testbenchs/tb_register_file.vhd" "b68232f7cfdc22cecc4c0a81bcab63603d8bf60a" "20260425135104.880":
-  entity tb_register_file at 1( 0) + 0 on 55;
-  architecture sim of tb_register_file at 8( 127) + 0 on 56;
-file . "src/testbenchs/tb_ula.vhd" "fc9ce7bb1a2313bc070ac3251178fe248cbb4ed4" "20260425135104.998":
+file . "src/testbenchs/tb_cpu.vhd" "fb5b54fc607c4136b72be084a299cd91218bd034" "20260426162901.738":
+  entity tb_cpu at 1( 0) + 0 on 63;
+  architecture sim of tb_cpu at 8( 107) + 0 on 64;
+file . "src/testbenchs/tb_ula.vhd" "fc9ce7bb1a2313bc070ac3251178fe248cbb4ed4" "20260426162901.654":
   entity tb_ula at 1( 0) + 0 on 59;
   architecture sim of tb_ula at 8( 107) + 0 on 60;
+file . "src/testbenchs/tb_register_file.vhd" "b68232f7cfdc22cecc4c0a81bcab63603d8bf60a" "20260426162901.532":
+  entity tb_register_file at 1( 0) + 0 on 55;
+  architecture sim of tb_register_file at 8( 127) + 0 on 56;
+file . "src/testbenchs/tb_instruction_memory.vhd" "fbe44d1653d170c01375c0078eb73b15122eeb99" "20260426162901.412":
+  entity tb_instruction_memory at 1( 0) + 0 on 51;
+  architecture sim of tb_instruction_memory at 8( 137) + 0 on 52;
+file . "src/cpu.vhd" "bfe51ffa61b7b715e041dc41e74b30e60d504d7c" "20260426162901.341":
+  entity cpu at 1( 0) + 0 on 47;
+  architecture rtl of cpu at 11( 143) + 0 on 48;
+file . "src/stages/mem_stage.vhd" "1d99163d9f7c7c1a2f7c609d8a7815fb627fd8da" "20260426162901.332":
+  entity mem_stage at 1( 0) + 0 on 43;
+  architecture rtl of mem_stage at 33( 879) + 0 on 44;
+file . "src/stages/id_stage.vhd" "e5b1156c2f8a77c0f8fd6f086b5fcdd96233de81" "20260426162901.324":
+  entity id_stage at 1( 0) + 0 on 39;
+  architecture rtl of id_stage at 42( 1369) + 0 on 40;
+file . "src/pipeline_registers/mem_wb.vhd" "b2b68654deeb8ecaf93d37a2920a95f980368699" "20260426162901.315":
+  entity mem_wb at 1( 0) + 0 on 35;
+  architecture rtl of mem_wb at 30( 685) + 0 on 36;
+file . "src/pipeline_registers/id_ex.vhd" "842b80f4b3b12f1ae11fda01e06cb17879570561" "20260426162901.307":
+  entity id_ex at 1( 0) + 0 on 31;
+  architecture rtl of id_ex at 54( 1233) + 0 on 32;
+file . "src/control/control_unit.vhd" "b5da9e05714fff948b4f562ed2bf055155392cce" "20260426162901.299":
+  entity control_unit at 1( 0) + 0 on 27;
+  architecture struct of control_unit at 23( 724) + 0 on 28;
+file . "src/control/main_dec.vhd" "e21f254aba7d47e97178b390c76c469008663dd2" "20260426162901.292":
+  entity maindec at 1( 0) + 0 on 23;
+  architecture rtl of maindec at 19( 452) + 0 on 24;
+file . "src/memory/instruction_memory.vhd" "ca9b13b20aea85c70af2c1cadad49d4628027873" "20260426162901.286":
+  entity instruction_memory at 1( 0) + 0 on 19;
+  architecture rtl of instruction_memory at 12( 248) + 0 on 20;
+file . "src/architectural_components/se_unit.vhd" "4bc47edb4c33fb854ab016578c9a3ca9b4420d9c" "20260426162901.275":
+  entity se_unit at 1( 0) + 0 on 15;
+  architecture rtl of se_unit at 12( 245) + 0 on 16;
+file . "src/architectural_components/program_counter.vhd" "1883782cb0dd132fd6201a78a38b68a5e54a9de6" "20260426162901.262":
+  entity program_counter at 1( 0) + 0 on 11;
+  architecture rtl of program_counter at 15( 302) + 0 on 12;
+file . "src/architectural_components/register_file.vhd" "094e35fa506c5fe55b07ab1bf823d2e52b9dc900" "20260426162901.271":
+  entity register_file at 1( 0) + 0 on 13;
+  architecture rtl of register_file at 23( 537) + 0 on 14;
+file . "src/architectural_components/ula.vhd" "32e01f9f766650914c8c183c7093e8924ee5b3d6" "20260426162901.282":
+  entity ula at 1( 0) + 0 on 17;
+  architecture rtl of ula at 17( 351) + 0 on 18;
+file . "src/memory/data_memory.vhd" "d93f33f268a9bfea705c02b1dfcc55a9d7c52762" "20260426162901.289":
+  entity data_memory at 38( 837) + 0 on 21;
+  architecture rtl of data_memory at 50( 1101) + 0 on 22;
+file . "src/control/alu_decoder.vhd" "21ef93c2cd84e68efcae5be1a5271ed6f4386850" "20260426162901.295":
+  entity aludec at 1( 0) + 0 on 25;
+  architecture rtl of aludec at 15( 312) + 0 on 26;
+file . "src/pipeline_registers/if_id.vhd" "23279072db0e3fc2ab91a41bbc6da8b8a036f8bc" "20260426162901.303":
+  entity if_id at 1( 0) + 0 on 29;
+  architecture rtl of if_id at 22( 477) + 0 on 30;
+file . "src/pipeline_registers/ex_mem.vhd" "46c7ab33068a76a4896cf540b881718e41bb64eb" "20260426162901.311":
+  entity ex_mem at 1( 0) + 0 on 33;
+  architecture rtl of ex_mem at 30( 741) + 0 on 34;
+file . "src/stages/if_stage.vhd" "badfb22b682f99c5ff5b29d9efe4f6c64e6b4973" "20260426162901.320":
+  entity if_stage at 1( 0) + 0 on 37;
+  architecture rtl of if_stage at 17( 470) + 0 on 38;
+file . "src/stages/ex_stage.vhd" "8b2391e2b93a18a22fe5681cbbf6b6891e992aee" "20260426162901.328":
+  entity ex_stage at 1( 0) + 0 on 41;
+  architecture rtl of ex_stage at 43( 1123) + 0 on 42;
+file . "src/stages/wb_stage.vhd" "3ac685c4a36b22ef6d566a3a9fc0c179fb8e46dd" "20260426162901.336":
+  entity wb_stage at 1( 0) + 0 on 45;
+  architecture rtl of wb_stage at 21( 537) + 0 on 46;
+file . "src/testbenchs/tb_program_counter.vhd" "1e799995f66f0d86225b905bc29be2a4b5daeed0" "20260426162901.346":
+  entity tb_program_counter at 1( 0) + 0 on 49;
+  architecture sim of tb_program_counter at 8( 131) + 0 on 50;
+file . "src/testbenchs/tb_data_memory.vhd" "43416a835c9bb953accb0b30f2ac7335e6288dba" "20260426162901.468":
+  entity tb_data_memory at 1( 0) + 0 on 53;
+  architecture sim of tb_data_memory at 8( 123) + 0 on 54;
+file . "src/testbenchs/tb_se_unit.vhd" "cb29444afbf179febf97874eb12d8cefe6103c96" "20260426162901.592":
+  entity tb_se_unit at 1( 0) + 0 on 57;
+  architecture sim of tb_se_unit at 8( 115) + 0 on 58;
+file . "src/testbenchs/tb_alu_decoder.vhd" "92b37fa3ac69be361eba9cbe938b1f09bd006533" "20260426162901.710":
+  entity tb_aludec at 1( 0) + 0 on 61;
+  architecture sim of tb_aludec at 7( 87) + 0 on 62;
