@@ -7,23 +7,32 @@ end entity tb_ula;
 
 architecture sim of tb_ula is
 
-  -- Sinais internos com a nova nomenclatura (Sufixo E)
-  signal tb_SrcAE       : std_logic_vector(31 downto 0) := (others => '0');
-  signal tb_SrcBE       : std_logic_vector(31 downto 0) := (others => '0');
-  signal tb_ALUControlE : std_logic_vector(2 downto 0) := "000";
-  signal tb_ALUResultE  : std_logic_vector(31 downto 0);
-  signal tb_ZeroE       : std_logic;
+  component ula is
+    port (
+      R1         : in  std_logic_vector(31 downto 0);
+      R2         : in  std_logic_vector(31 downto 0);
+      ALUControl : in  std_logic_vector(2 downto 0);
+      ALUResult  : out std_logic_vector(31 downto 0);
+      Zero       : out std_logic
+    );
+  end component;
+
+  signal tb_R1         : std_logic_vector(31 downto 0) := (others => '0');
+  signal tb_R2         : std_logic_vector(31 downto 0) := (others => '0');
+  signal tb_ALUControl : std_logic_vector(2 downto 0) := "000";
+  signal tb_ALUResult  : std_logic_vector(31 downto 0);
+  signal tb_Zero       : std_logic;
 
 begin
 
-  -- Instanciação direta e moderna
-  DUT: entity work.ula port map (
-    SrcAE       => tb_SrcAE,
-    SrcBE       => tb_SrcBE,
-    ALUControlE => tb_ALUControlE,
-    ALUResultE  => tb_ALUResultE,
-    ZeroE       => tb_ZeroE
+  DUT: ula port map (
+    R1         => tb_R1,
+    R2         => tb_R2,
+    ALUControl => tb_ALUControl,
+    ALUResult  => tb_ALUResult,
+    Zero       => tb_Zero
   );
+
 
   process
   begin
