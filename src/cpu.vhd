@@ -4,7 +4,9 @@ use IEEE.numeric_std.all;
 
 entity cpu is
   port (
-    clk, rst : in std_logic
+    clk, rst : in std_logic;
+    RdW : out std_logic_vector(4 downto 0);
+    ResultW : out std_logic_vector(31 downto 0)
   );
 end entity cpu;
 
@@ -37,7 +39,7 @@ architecture rtl of cpu is
   signal s_ResultSrcE_out : std_logic_vector(1 downto 0);
   signal s_RdE_out : std_logic_vector(4 downto 0);
   signal s_PCPlusE_out, s_ALUResultE, s_WriteDataE, s_PCTargetE : std_logic_vector(31 downto 0);
-  signal s_SELMux : std_logic; 
+  signal s_SELMux : std_logic;
 
   -- MEMORY (MEM)
   signal s_RegWriteM, s_MemWriteM : std_logic;
@@ -89,7 +91,7 @@ begin
     PCPlus4D   => s_PCPlus4D
   );
 
-  -- >>> ESTÁGIO 2: INSTRUCTION DECODE (ID) 
+  -- >>> ESTÁGIO 2: INSTRUCTION DECODE (ID)
   ID_STG: entity work.id_stage port map(
     clk          => clk,
     rst          => rst,
@@ -213,4 +215,6 @@ begin
     ResultW       => s_ResultW
   );
 
+  RdW <= s_RdW_out;
+  ResultW <= s_ResultW;
 end architecture rtl;

@@ -70,7 +70,6 @@ begin
   RdE_out <= RdE_in;
   PCPlusE_out <= PCPlusE_in;
 
-  RdE_out <= RdE_in;
   WriteDataE <= RD2E;
   PCTargetE <= std_logic_vector(unsigned(PCE) + unsigned(ImmExtE));
   SELMux <= JumpE or (BranchE and Zero);

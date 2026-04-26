@@ -61,12 +61,12 @@ begin
     end if;
   end process;
 
-RegWriteM <= RegWriteE;
-ResultSrcM <= ResultSrcE;
-MemWriteM <= MemWriteE;
-ALUResultM <= ALUResultE;
-WriteDataM <= WriteDataE;
-RdM <= RdE;
-PCPlus4M <= PCPlus4E;
+RegWriteM <= RegWrite;
+ResultSrcM <= ResultSrc;
+MemWriteM <= MemWrite;
+ALUResultM <= ALUResult;
+WriteDataM <= WriteData;
+RdM <= Rd;
+PCPlus4M <= PCPlus4;
 
 end architecture rtl;

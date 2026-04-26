@@ -23,7 +23,13 @@ end entity;
 architecture rtl of register_file is
 
   type memory_t is array (0 to 31) of std_logic_vector(31 downto 0);
-  signal mem : memory_t;
+  signal mem : memory_t := (
+  1 => x"00000002",
+  2 => x"00000002",
+  4 => x"00000004",
+  5 =>x"00000005",
+  others => (others => '0')
+);
 
 begin
 
