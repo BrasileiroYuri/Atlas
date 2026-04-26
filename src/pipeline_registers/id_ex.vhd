@@ -112,7 +112,7 @@ RegWriteE <= RegWrite;
 ResultSrcE <= ResultSrc;
 MemWriteE <= MemWrite;
 JumpE <= Jump;
-BranchE <= BranchD;
+BranchE <= Branch;
 ALUControlE <= ALUControl;
 ALUSrcE <= ALUSrc;
 

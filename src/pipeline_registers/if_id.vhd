@@ -36,7 +36,7 @@ begin
       elsif we = '1' then
         Instr <= InstrF;
         PC <= PCF;
-        PCPlus4 <= InstrF;
+        PCPlus4 <= PCPlus4F;
       end if;
     end if;
   end process;
