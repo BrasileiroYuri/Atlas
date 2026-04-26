@@ -1,0 +1,21 @@
+>>> Testes de 'memory/' feitos!
+>>> Testes de 'pipeline_registers' feitos!
+>>> Testes de 'architectural_components/' feitos!
+>>> Testes de 'stages/' feitos!
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@5ns:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+tb_cpu2.vhd:41:9:@36ns:(report note): Ciclo 1 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@46ns:(report note): Ciclo 2 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@56ns:(report note): Ciclo 3 | RdW=03 | ResultW=00000003
+tb_cpu2.vhd:48:13:@56ns:(report note): PASS: ADD x3,x1,x2 = 3 no ciclo 3
+tb_cpu2.vhd:41:9:@66ns:(report note): Ciclo 4 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@76ns:(report note): Ciclo 5 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@86ns:(report note): Ciclo 6 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@96ns:(report note): Ciclo 7 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@106ns:(report note): Ciclo 8 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@116ns:(report note): Ciclo 9 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:41:9:@126ns:(report note): Ciclo 10 | RdW=00 | ResultW=00000000
+tb_cpu2.vhd:58:5:@126ns:(report note): === FIM ===
