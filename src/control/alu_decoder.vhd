@@ -42,6 +42,8 @@ begin
 
           when others => ALUControl <= "000";
         end case;
+      when "11" =>
+        ALUControl <="111";
 
       when others =>
         ALUControl <= "000";

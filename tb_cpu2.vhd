@@ -31,6 +31,7 @@ test_proc : process
     variable found_2 : boolean := false;
     variable found_3 : boolean := false;
     variable found_4 : boolean := false;
+    variable found_5 : boolean := false;
 begin
  tb_rst <= '1';
     wait until rising_edge(tb_clk);
@@ -39,7 +40,7 @@ begin
     -- Amostra em cada rising edge, não em tempo absoluto
     for i in 1 to 20 loop
         wait until rising_edge(tb_clk);
-        --wait for 1 ns;
+--        wait for 1 ns;
 
         report "Ciclo " & integer'image(i) &
                " | RdW=" & to_hstring("000" & s_RdW) &
@@ -65,10 +66,16 @@ begin
             found_3 := true;
         end if;
 
-        if s_RdW = "10000" and s_ResultW = x"00000005" then
-            report "PASS: ADD x16 x3 x6 = 5 no ciclo " & integer'image(i)
+        if s_RdW = "01001" and s_ResultW = x"00000002" then
+            report "PASS: AND x9 x1 x8 = 2 no ciclo " & integer'image(i)
             severity note;
             found_4 := true;
+        end if;
+
+        if s_RdW = "01010" and s_ResultW = x"00000003" then
+            report "PASS: OR x10 x1 x8 = 3 no ciclo " & integer'image(i)
+            severity note;
+            found_5 := true;
         end if;
     end loop;
 
@@ -88,21 +95,10 @@ begin
         report "FALHA: resultado correto nunca apareceu no WB 4"
         severity error;
 
+    assert found_5
+        report "FALHA: resultado correto nunca apareceu no WB 5"
+        severity error;
     report "=== FIM ===" severity note;
     wait;
 end process;
-/*test_proc : process
-begin
-  tb_rst <= '1';
-  wait until rising_edge(tb_clk);
-  tb_rst <= '0';
-
-  if rising_edge(tb_clk) then
-    report "RdW=" & to_hstring("000" & s_RdW) &
-               " | ResultW=" & to_hstring(s_ResultW);
-             else
-               wait for 20 ns;
-             end if;
-
-end process;*/
 end architecture rtl;

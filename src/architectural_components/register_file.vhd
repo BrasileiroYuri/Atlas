@@ -29,6 +29,7 @@ architecture rtl of register_file is
   4 => x"00000004",
   5 => x"00000005",
   7 => x"FFFFFFFD",
+  8 => x"00000003",
   others => (others => '0')
 );
 
