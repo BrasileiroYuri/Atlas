@@ -17,6 +17,8 @@ architecture rtl of instruction_memory is
   signal mem : instruct_mem := (
       0 => x"002081B3", -- Tradução em Hex do: ADD x3, x1, x2
       1 => "0100000" & "00100" & "00101" & "000" & "00110" & "0110011", -- sub x6 x5 x4;
+      2 => "1000000" & "00000" & "00111" & "100" & "01111" & "0010011", -- NOT x15 x7
+      5 => "0000000" & "00110" & "00011" & "000" & "10000" & "0110011", -- add x16 x3 x6
       others => (others => '0')
     );
     -- Não apagar abaixo é para teste
