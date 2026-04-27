@@ -7,7 +7,7 @@ entity control_unit is
     op         : in  std_logic_vector(6 downto 0); -- bits 6:0
     funct3     : in  std_logic_vector(2 downto 0); -- bits 14:12
     funct7b5   : in  std_logic;                    -- bit 30
-    
+
     -- SAÍDAS (Sinais de Controlo para o Datapath)
     ResultSrc  : out std_logic_vector(1 downto 0);
     MemWrite   : out std_logic;
@@ -29,7 +29,7 @@ begin
   MD: entity work.maindec
     port map (
       op        => op,
-      
+
       -- Sinais que vão direto para fora
       ResultSrc => ResultSrc,
       MemWrite  => MemWrite,
@@ -38,9 +38,9 @@ begin
       RegWrite  => RegWrite,
       Jump      => Jump,
       ImmSrc    => ImmSrc,
-      
+
       -- Sinal interno que vai para o aludec
-      ALUOp     => s_ALUOp 
+      ALUOp     => s_ALUOp
     );
 
   AD: entity work.aludec
@@ -49,7 +49,7 @@ begin
       funct3     => funct3,
       funct7b5   => funct7b5,
       ALUOp      => s_ALUOp,   -- Recebe o fio que veio do maindec
-      
+
       ALUControl => ALUControl
     );
 

@@ -61,7 +61,7 @@ begin
         MemWrite  <= '0';
         ResultSrc <= "00";
         Branch    <= '0';
-        ALUOp     <= "10";
+        ALUOp     <= "11"; -- Adicionando 11
         Jump      <= '0';
 
       -- TIPO-S (ST - Store)

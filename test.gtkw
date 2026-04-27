@@ -1,0 +1,242 @@
+[*]
+[*] GTKWave Analyzer v3.3.127 (w)1999-2026 BSI
+[*] Mon Apr 27 01:28:14 2026
+[*]
+[dumpfile] "/home/yuri/Workspace/Projects/ufrn/org/Atlas/wave.vcd"
+[dumpfile_mtime] "Sun Apr 26 22:37:36 2026"
+[dumpfile_size] 30007296
+[savefile] "/home/yuri/Workspace/Projects/ufrn/org/Atlas/test.gtkw"
+[timestart] 0
+[size] 2560 1080
+[pos] -14 -12
+*0.000000 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_cpu2.
+[treeopen] tb_cpu2.cpu.
+[treeopen] tb_cpu2.cpu.id_stg.
+[treeopen] tb_cpu2.cpu.if_stg.
+[sst_width] 273
+[signals_width] 507
+[sst_expanded] 1
+[sst_vpaned_height] 324
+@22
+tb_cpu2.s_rdw[4:0]
+tb_cpu2.s_resultw[31:0]
+@28
+tb_cpu2.tb_clk
+tb_cpu2.cpu.id_stg.seu.immsrc[1:0]
+tb_cpu2.tb_rst
+@c00022
++{tb_cpu2.cpu.if_stg.pcf(if)[31:0]} tb_cpu2.cpu.if_stg.pcf[31:0]
+@28
+(0)tb_cpu2.cpu.if_stg.pcf[31:0]
+(1)tb_cpu2.cpu.if_stg.pcf[31:0]
+(2)tb_cpu2.cpu.if_stg.pcf[31:0]
+(3)tb_cpu2.cpu.if_stg.pcf[31:0]
+(4)tb_cpu2.cpu.if_stg.pcf[31:0]
+(5)tb_cpu2.cpu.if_stg.pcf[31:0]
+(6)tb_cpu2.cpu.if_stg.pcf[31:0]
+(7)tb_cpu2.cpu.if_stg.pcf[31:0]
+(8)tb_cpu2.cpu.if_stg.pcf[31:0]
+(9)tb_cpu2.cpu.if_stg.pcf[31:0]
+(10)tb_cpu2.cpu.if_stg.pcf[31:0]
+(11)tb_cpu2.cpu.if_stg.pcf[31:0]
+(12)tb_cpu2.cpu.if_stg.pcf[31:0]
+(13)tb_cpu2.cpu.if_stg.pcf[31:0]
+(14)tb_cpu2.cpu.if_stg.pcf[31:0]
+(15)tb_cpu2.cpu.if_stg.pcf[31:0]
+(16)tb_cpu2.cpu.if_stg.pcf[31:0]
+(17)tb_cpu2.cpu.if_stg.pcf[31:0]
+(18)tb_cpu2.cpu.if_stg.pcf[31:0]
+(19)tb_cpu2.cpu.if_stg.pcf[31:0]
+(20)tb_cpu2.cpu.if_stg.pcf[31:0]
+(21)tb_cpu2.cpu.if_stg.pcf[31:0]
+(22)tb_cpu2.cpu.if_stg.pcf[31:0]
+(23)tb_cpu2.cpu.if_stg.pcf[31:0]
+(24)tb_cpu2.cpu.if_stg.pcf[31:0]
+(25)tb_cpu2.cpu.if_stg.pcf[31:0]
+(26)tb_cpu2.cpu.if_stg.pcf[31:0]
+(27)tb_cpu2.cpu.if_stg.pcf[31:0]
+(28)tb_cpu2.cpu.if_stg.pcf[31:0]
+(29)tb_cpu2.cpu.if_stg.pcf[31:0]
+(30)tb_cpu2.cpu.if_stg.pcf[31:0]
+(31)tb_cpu2.cpu.if_stg.pcf[31:0]
+@1401200
+-group_end
+@22
++{tb_cpu2.cpu.if_stg.instrf(if)[31:0]} tb_cpu2.cpu.if_stg.instrf[31:0]
++{tb_cpu2.cpu.if_id_reg.instrf(if_id)[31:0]} tb_cpu2.cpu.if_id_reg.instrf[31:0]
++{tb_cpu2.cpu.if_id_reg.instrd(if_id)[31:0]} tb_cpu2.cpu.if_id_reg.instrd[31:0]
++{tb_cpu2.cpu.id_stg.instrd_in(id)[31:0]} tb_cpu2.cpu.id_stg.instrd_in[31:0]
++{tb_cpu2.cpu.id_stg.rd1d(id)[31:0]} tb_cpu2.cpu.id_stg.rd1d[31:0]
++{tb_cpu2.cpu.id_stg.rd2d(id)[31:0]} tb_cpu2.cpu.id_stg.rd2d[31:0]
+@c00022
++{tb_cpu2.cpu.id_stg.immextd(id)[31:0]} tb_cpu2.cpu.id_stg.immextd[31:0]
+@28
+(0)tb_cpu2.cpu.id_stg.immextd[31:0]
+(1)tb_cpu2.cpu.id_stg.immextd[31:0]
+(2)tb_cpu2.cpu.id_stg.immextd[31:0]
+(3)tb_cpu2.cpu.id_stg.immextd[31:0]
+(4)tb_cpu2.cpu.id_stg.immextd[31:0]
+(5)tb_cpu2.cpu.id_stg.immextd[31:0]
+(6)tb_cpu2.cpu.id_stg.immextd[31:0]
+(7)tb_cpu2.cpu.id_stg.immextd[31:0]
+(8)tb_cpu2.cpu.id_stg.immextd[31:0]
+(9)tb_cpu2.cpu.id_stg.immextd[31:0]
+(10)tb_cpu2.cpu.id_stg.immextd[31:0]
+(11)tb_cpu2.cpu.id_stg.immextd[31:0]
+(12)tb_cpu2.cpu.id_stg.immextd[31:0]
+(13)tb_cpu2.cpu.id_stg.immextd[31:0]
+(14)tb_cpu2.cpu.id_stg.immextd[31:0]
+(15)tb_cpu2.cpu.id_stg.immextd[31:0]
+(16)tb_cpu2.cpu.id_stg.immextd[31:0]
+(17)tb_cpu2.cpu.id_stg.immextd[31:0]
+(18)tb_cpu2.cpu.id_stg.immextd[31:0]
+(19)tb_cpu2.cpu.id_stg.immextd[31:0]
+(20)tb_cpu2.cpu.id_stg.immextd[31:0]
+(21)tb_cpu2.cpu.id_stg.immextd[31:0]
+(22)tb_cpu2.cpu.id_stg.immextd[31:0]
+(23)tb_cpu2.cpu.id_stg.immextd[31:0]
+(24)tb_cpu2.cpu.id_stg.immextd[31:0]
+(25)tb_cpu2.cpu.id_stg.immextd[31:0]
+(26)tb_cpu2.cpu.id_stg.immextd[31:0]
+(27)tb_cpu2.cpu.id_stg.immextd[31:0]
+(28)tb_cpu2.cpu.id_stg.immextd[31:0]
+(29)tb_cpu2.cpu.id_stg.immextd[31:0]
+(30)tb_cpu2.cpu.id_stg.immextd[31:0]
+(31)tb_cpu2.cpu.id_stg.immextd[31:0]
+@1401202
+-group_end
+@22
++{tb_cpu2.cpu.id_ex_reg.rd1d(id_ex)[31:0]} tb_cpu2.cpu.id_ex_reg.rd1d[31:0]
++{tb_cpu2.cpu.id_ex_reg.rd2d(id_ex)[31:0]} tb_cpu2.cpu.id_ex_reg.rd2d[31:0]
+@c00022
++{tb_cpu2.cpu.id_ex_reg.rd1e(id_ex)[31:0]} tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+@28
+(0)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(1)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(2)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(3)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(4)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(5)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(6)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(7)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(8)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(9)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(10)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(11)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(12)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(13)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(14)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(15)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(16)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(17)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(18)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(19)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(20)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(21)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(22)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(23)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(24)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(25)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(26)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(27)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(28)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(29)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(30)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+(31)tb_cpu2.cpu.id_ex_reg.rd1e[31:0]
+@1401200
+-group_end
+@22
++{tb_cpu2.cpu.id_ex_reg.rd2e(id_ex)[31:0]} tb_cpu2.cpu.id_ex_reg.rd2e[31:0]
+@c00022
++{tb_cpu2.cpu.ex_stg.aluresulte(ex)[31:0]} tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+@28
+(0)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(1)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(2)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(3)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(4)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(5)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(6)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(7)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(8)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(9)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(10)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(11)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(12)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(13)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(14)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(15)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(16)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(17)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(18)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(19)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(20)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(21)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(22)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(23)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(24)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(25)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(26)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(27)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(28)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(29)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(30)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+(31)tb_cpu2.cpu.ex_stg.aluresulte[31:0]
+@1401200
+-group_end
+@22
++{tb_cpu2.cpu.ex_mem_reg.aluresulte(ex_mem)[31:0]} tb_cpu2.cpu.ex_mem_reg.aluresulte[31:0]
++{tb_cpu2.cpu.ex_mem_reg.aluresultm(ex_mem)[31:0]} tb_cpu2.cpu.ex_mem_reg.aluresultm[31:0]
+@28
++{tb_cpu2.cpu.ex_mem_reg.memwritee(ex_mem)} tb_cpu2.cpu.ex_mem_reg.memwritee
++{tb_cpu2.cpu.ex_mem_reg.memwritem(ex_mem)} tb_cpu2.cpu.ex_mem_reg.memwritem
+@22
++{tb_cpu2.cpu.mem_stg.aluresultm_in(mem)[31:0]} tb_cpu2.cpu.mem_stg.aluresultm_in[31:0]
++{tb_cpu2.cpu.mem_stg.writedatam(mem)[31:0]} tb_cpu2.cpu.mem_stg.writedatam[31:0]
++{tb_cpu2.cpu.mem_stg.aluresultm_out(mem)[31:0]} tb_cpu2.cpu.mem_stg.aluresultm_out[31:0]
++{tb_cpu2.cpu.mem_stg.datamem_out(mem)[31:0]} tb_cpu2.cpu.mem_stg.datamem_out[31:0]
++{tb_cpu2.cpu.mem_wb_reg.readdataw(mem_wb)[31:0]} tb_cpu2.cpu.mem_wb_reg.readdataw[31:0]
++{tb_cpu2.cpu.mem_wb_reg.datamem_in(mem_wb)[31:0]} tb_cpu2.cpu.mem_wb_reg.datamem_in[31:0]
+@c00022
++{tb_cpu2.cpu.wb_stg.resultw(wb)[31:0]} tb_cpu2.cpu.wb_stg.resultw[31:0]
+@28
+(0)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(1)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(2)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(3)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(4)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(5)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(6)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(7)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(8)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(9)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(10)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(11)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(12)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(13)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(14)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(15)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(16)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(17)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(18)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(19)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(20)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(21)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(22)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(23)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(24)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(25)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(26)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(27)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(28)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(29)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(30)tb_cpu2.cpu.wb_stg.resultw[31:0]
+(31)tb_cpu2.cpu.wb_stg.resultw[31:0]
+@1401200
+-group_end
+@22
++{tb_cpu2.cpu.wb_stg.rdw_in(wb)[4:0]} tb_cpu2.cpu.wb_stg.rdw_in[4:0]
++{tb_cpu2.cpu.wb_stg.rdw_out(wb)[4:0]} tb_cpu2.cpu.wb_stg.rdw_out[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

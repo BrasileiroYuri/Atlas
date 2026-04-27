@@ -37,6 +37,8 @@ begin
         else
           result_internal <= x"00000000";
         end if;
+      when "111" => -- NOT
+        result_internal <= not SrcAE;
       when others =>
         result_internal <= (others => '0');
     end case;
