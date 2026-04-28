@@ -32,10 +32,12 @@ entity id_stage is
     PCD_out      : out std_logic_vector(31 downto 0);
     PCPlus4D_out : out std_logic_vector(31 downto 0);
 
-    -- [TODO: HAZARD UNIT] Endereços extraídos
+  --- Para a HU
+    Rs1D         : out std_logic_vector(4 downto 0);
+    Rs2D         : out std_logic_vector(4 downto 0);
+  ---
+
     RdD          : out std_logic_vector(4 downto 0)
-    -- Rs1D         : out std_logic_vector(4 downto 0); -- Descomente no futuro
-    -- Rs2D         : out std_logic_vector(4 downto 0)  -- Descomente no futuro
   );
 end entity id_stage;
 
@@ -51,7 +53,9 @@ begin
 
   -- Fatiamento para a frente
   RdD  <= InstrD_in(11 downto 7);
-  
+  Rs1D <= InstrD_in(19 downto 15);
+  Rs2D <= InstrD_in(24 downto 20);
+
   -- [TODO: HAZARD UNIT] Descomente as linhas abaixo no futuro
   -- Rs1D <= InstrD_in(19 downto 15);
   -- Rs2D <= InstrD_in(24 downto 20);

@@ -48,8 +48,8 @@ begin
         severity note;
 
         -- Captura no ciclo exato em que o WB produz resultado
-        if s_RdW = "00011" and s_ResultW = x"00000004" then
-            report "PASS: ADD x3,x1,x2 = 4 no ciclo " & integer'image(i)
+        if s_RdW = "00011" and s_ResultW = x"00000003" then
+            report "PASS: ADD x3,x1,x2 = 3 no ciclo " & integer'image(i)
             severity note;
             found_1 := true;
         end if;

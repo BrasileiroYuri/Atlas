@@ -19,11 +19,19 @@ entity ex_stage is
 
     PCPlusE_in : in std_logic_vector(31 downto 0);
     PCPlusE_out : out std_logic_vector(31 downto 0);
-  -----
+  --- Sinais para branch.
     JumpE : in std_logic;
     BranchE : in std_logic;
+  --- Sinais consumidos no ex_stage.
     ALUControlE : in std_logic_vector(2 downto 0);
     ALUSrcE : in std_logic;
+  --- Entradas dos MUXs.
+    ResultW : in std_logic_vector(31 downto  0);
+    ALUResultM : in std_logic_vector(31 downto  0);
+  --- Seletores do MUXs, vindos da HU.
+    ForwardAE : in std_logic_vector(1 downto 0);
+    ForwardBE : in std_logic_vector(1 downto 0);
+  ---
 
     RD1E : in std_logic_vector(31 downto 0);
     RD2E : in std_logic_vector(31 downto 0);

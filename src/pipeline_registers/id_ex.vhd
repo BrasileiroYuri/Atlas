@@ -28,6 +28,13 @@ entity id_ex is
 
     ALUSrcD: in std_logic;
     ALUSrcE: out std_logic;
+
+  --- Para a Hazard Unit.
+    Rs1D : in std_logic_vector(4 downto 0);
+    Rs1E : out std_logic_vector(4 downto 0);
+
+    Rs2D : in std_logic_vector(4 downto 0);
+    Rs2E : out std_logic_vector(4 downto 0);
   ---
 
     ImmExtD : in std_logic_vector(31 downto 0);
