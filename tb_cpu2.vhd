@@ -72,8 +72,8 @@ begin
             found_4 := true;
         end if;
 
-        if s_RdW = "01010" and s_ResultW = x"00000003" then
-            report "PASS: OR x10 x1 x8 = 3 no ciclo " & integer'image(i)
+        if s_RdW = "01011" and s_ResultW = x"00000003" then
+            report "PASS: OR x11 x1 x8 = 3 no ciclo " & integer'image(i)
             severity note;
             found_5 := true;
         end if;
