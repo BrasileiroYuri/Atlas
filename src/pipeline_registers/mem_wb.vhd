@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 entity mem_wb is
   port (
 
-  clk, rst, we : in std_logic;
+  clk, rst : in std_logic;
 
   RegWriteM : in std_logic;
   RegWriteW : out std_logic;
@@ -48,7 +48,7 @@ begin
           DataMem <= (others => '0');
           Rd <= (others => '0');
           PCPlus4 <= (others => '0');
-        elsif we = '1' then
+        else
           RegWrite <= RegWriteM;
           ResultSrc <= ResultSrcM;
           ALUResult <= ALUResultM;

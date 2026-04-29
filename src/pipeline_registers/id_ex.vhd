@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 entity id_ex is
   port (
 
-    clk, rst, we : in std_logic;
+    clk, rst : in std_logic;
 
 --- Sinais de controle:
     RegWriteD: in std_logic;
@@ -29,6 +29,7 @@ entity id_ex is
     ALUSrcD: in std_logic;
     ALUSrcE: out std_logic;
 
+    FlushE : in std_logic;
   --- Para a Hazard Unit.
     Rs1D : in std_logic_vector(4 downto 0);
     Rs1E : out std_logic_vector(4 downto 0);
@@ -75,13 +76,16 @@ architecture rtl of id_ex is
   signal Rd : std_logic_vector(4 downto 0);
   signal ImmExt : std_logic_vector(31 downto 0);
   signal PCPlus4 : std_logic_vector(31 downto 0);
+  --- Para HU
+  signal Rs1 : std_logic_vector(4 downto 0);
+  signal Rs2 : std_logic_vector(4 downto 0);
 
 begin
 
   process(clk)
   begin
     if rising_edge(clk) then
-      if rst = '1' then
+      if rst = '1' or FlushE = '1' then
         RegWrite <= '0';
         ResultSrc <= (others => '0');
         MemWrite <= '0';
@@ -96,7 +100,10 @@ begin
         Rd<= (others => '0');
         ImmExt<= (others => '0');
         PCPlus4<= (others => '0');
-      elsif we = '1' then
+
+        Rs1 <= (others => '0');
+        Rs2 <= (others => '0');
+      else
         RegWrite <= RegWriteD;
         ResultSrc <= ResultSrcD;
         MemWrite <= MemWriteD;
@@ -111,6 +118,9 @@ begin
         Rd<= RdD;
         ImmExt <= ImmExtD;
         PCPlus4<= PCPlus4D;
+
+        Rs1 <= Rs1D;
+        Rs2 <= Rs2D;
       end if;
     end if;
   end process;
@@ -129,5 +139,8 @@ PCE <= PC;
 RdE <= Rd;
 ImmExtE <= ImmExt;
 PCPlus4E <= PCPlus4;
+
+Rs1E <= Rs1;
+Rs2E <= Rs2;
 
 end architecture rtl;

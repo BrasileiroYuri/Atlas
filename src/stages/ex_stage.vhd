@@ -43,7 +43,10 @@ entity ex_stage is
     ImmExtE : in std_logic_vector(31 downto 0);
 
     PCTargetE :out std_logic_vector(31 downto 0);
-    SELMux : out std_logic
+
+    ResultSRCE0 : out std_logic;
+
+    PCSrcE : out std_logic
   );
 end entity ex_stage;
 
@@ -51,34 +54,69 @@ end entity ex_stage;
 architecture rtl of ex_stage is
 
 signal Zero : std_logic;
+signal SrcAE : std_logic_vector(31 downto 0);
+
 signal SrcB : std_logic_vector(31 downto 0);
+signal SrcBE : std_logic_vector(31 downto 0);
 
 begin
   ULA : entity work.ula
     port map(
-     SrcAE => RD1E,
-     SrcBE => SrcB,
+     SrcAE => SrcAE,
+     SrcBE => SrcBE,
      ALUControlE => ALUControlE,
      ALUResultE => ALUResultE,
      ZeroE => Zero
     );
-  process(ALUSrcE, ImmExtE, RD2E)
+
+  process(ForwardAE, RD1E, ALUResultM, ResultW)
+  begin
+    case ForwardAE is
+      when "00" =>
+        SrcAE <= RD1E;
+      when "01" =>
+        SrcAE <= ResultW;
+      when "10" =>
+        SrcAE <= ALUResultM;
+      when others =>
+        SrcAE <= (others => '0');
+    end case;
+  end process;
+
+
+  process(ForwardBE, RD2E, ALUResultM, ResultW)
+  begin
+    case ForwardBE is
+      when "00" =>
+        SrcB <= RD2E;
+      when "01" =>
+        SrcB <= ResultW;
+      when "10" =>
+        SrcB <= ALUResultM;
+      when others =>
+        SrcB <= (others => '0');
+    end case;
+  end process;
+
+  process(ALUSrcE, ImmExtE, SrcB)
     begin
       case ALUSrcE is
         when '1' =>
-          SrcB <= ImmExtE;
+          SrcBE <= ImmExtE;
         when others =>
-          SrcB <= RD2E;
+          SrcBE <= SrcB;
       end case;
     end process;
 
   RegWriteE_out <= RegWriteE_in;
+  ResultSrcE0 <= ResultSrcE_in(0);
   ResultSrcE_out <= ResultSrcE_in;
   MemWriteE_out <= MemWriteE_in;
   RdE_out <= RdE_in;
   PCPlusE_out <= PCPlusE_in;
 
-  WriteDataE <= RD2E;
+
+  WriteDataE <= SrcB;
   PCTargetE <= std_logic_vector(unsigned(PCE) + unsigned(ImmExtE));
-  SELMux <= JumpE or (BranchE and Zero);
+  PCSrcE <= JumpE or (BranchE and Zero);
 end architecture rtl;

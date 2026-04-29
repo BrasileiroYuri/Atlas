@@ -56,10 +56,6 @@ begin
   Rs1D <= InstrD_in(19 downto 15);
   Rs2D <= InstrD_in(24 downto 20);
 
-  -- [TODO: HAZARD UNIT] Descomente as linhas abaixo no futuro
-  -- Rs1D <= InstrD_in(19 downto 15);
-  -- Rs2D <= InstrD_in(24 downto 20);
-
   CU: entity work.control_unit
     port map(
       op         => InstrD_in(6 downto 0),

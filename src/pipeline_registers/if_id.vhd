@@ -6,7 +6,8 @@ entity if_id is
   port (
   clk, rst : in std_logic;
 
-  we : in std_logic; -- When we = '0' we have a stall.
+  StallD : in std_logic; -- When we = '0' we have a stall.
+  FlushD : in std_logic;
 
   InstrF : in std_logic_vector(31 downto 0);
   InstrD : out std_logic_vector(31 downto 0);
@@ -29,11 +30,11 @@ begin
   process(clk)
   begin
     if rising_edge(clk) then
-      if rst = '1' then
+      if rst = '1' or FlushD = '1' then
         Instr   <= (others => '0');  -- reseta o registrador interno
         PC <= (others => '0');  -- reseta o registrador interno
         PCPlus4 <= (others => '0');  -- reseta o registrador interno
-      elsif we = '1' then
+      elsif StallD = '0' then
         Instr <= InstrF;
         PC <= PCF;
         PCPlus4 <= PCPlus4F;
