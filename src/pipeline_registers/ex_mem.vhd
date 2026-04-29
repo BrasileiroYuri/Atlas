@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 entity ex_mem is
   port (
-  clk, rst, we : in std_logic;
+  clk, rst: in std_logic;
 
   RegWriteE : in std_logic;
   ResultSrcE : in std_logic_vector(1 downto 0);
@@ -49,7 +49,7 @@ begin
         WriteData <= (others => '0');
         Rd <= (others => '0');
         PCPlus4 <= (others => '0');
-      elsif we = '1' then
+      else
         RegWrite <= RegWriteE;
         ResultSrc <= ResultSrcE;
         MemWrite <= MemWriteE;

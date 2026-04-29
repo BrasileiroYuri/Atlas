@@ -1,6 +1,7 @@
 ghdl --clean
 rm -f *.cf
 
+ghdl -a --std=08 src/hazard_handlers/hazard_unit.vhd
 ghdl -a --std=08 src/control/main_dec.vhd
 ghdl -a --std=08 src/control/alu_decoder.vhd
 ghdl -a --std=08 src/control/control_unit.vhd
@@ -26,7 +27,14 @@ done
 echo ">>> Testes de 'stages/' feitos!"
 
 ghdl -a --std=08 src/cpu.vhd
-ghdl -a --std=08 tb_cpu2.vhd
+file="$1"
 
-ghdl -e --std=08 tb_cpu2
-ghdl -r --std=08 tb_cpu2 --vcd=wave.vcd
+# remove .vhd extension
+base="${file%.vhd}"
+
+# create .vcd name
+wave="${base}.vcd"
+
+ghdl -a --std=08 "$file"
+ghdl -e --std=08 "$base"
+ghdl -r --std=08 "$base" --vcd="$wave"

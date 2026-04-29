@@ -4,8 +4,9 @@ use IEEE.numeric_std.all;
 
 entity if_stage is
   port (
-    clk, rst,we         : in  std_logic;
+    clk, rst         : in  std_logic;
 
+    StallF : in std_logic;
     PCSrcE      : in  std_logic;                      -- taken or not taken
     PCTargetE : in  std_logic_vector(31 downto 0);  -- endereço do branch
     PCPlus4F     : out std_logic_vector(31 downto 0);
@@ -26,7 +27,7 @@ begin
     port map(
       clk      => clk,
       rst      => rst,
-      we       => we,
+      StallF   => StallF,
       PCF_in  => PCF_in,
       PCF_out => PCF_out
     );

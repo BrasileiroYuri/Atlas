@@ -12,10 +12,18 @@ end entity cpu;
 
 architecture rtl of cpu is
 
-  -- 1. SINAIS DE INTERLIGAÇÃO
+  -- SINAIS DE STALL:
+  signal s_StallF, s_StallD : std_logic;
 
-  -- Fios Globais
-  signal s_pipeline_we : std_logic := '1';
+  -- SINAIS DE FLUSH:
+  signal s_FlushD, s_FlushE : std_logic;
+
+  -- Sinais de Forward:
+  signal s_ForwardAE : std_logic_vector(1 downto 0);
+  signal s_ForwardBE : std_logic_vector(1 downto 0);
+
+  signal s_Rs1E, s_Rs2E : std_logic_vector(4 downto 0);
+  signal s_ResultSrcE0 : std_logic;
 
   -- FETCH (IF)
   signal s_PCF, s_PCPlus4F, s_InstrF : std_logic_vector(31 downto 0);
@@ -27,6 +35,7 @@ architecture rtl of cpu is
   signal s_ALUControlD : std_logic_vector(2 downto 0);
   signal s_ImmExtD, s_RD1D, s_RD2D, s_PCD_out, s_PCPlus4D_out : std_logic_vector(31 downto 0);
   signal s_RdD : std_logic_vector(4 downto 0);
+  signal s_Rs1D, s_Rs2D : std_logic_vector(4 downto 0);
 
   -- EXECUTE (EX)
   signal s_RegWriteE, s_MemWriteE, s_JumpE, s_BranchE, s_ALUSrcE : std_logic;
@@ -39,7 +48,7 @@ architecture rtl of cpu is
   signal s_ResultSrcE_out : std_logic_vector(1 downto 0);
   signal s_RdE_out : std_logic_vector(4 downto 0);
   signal s_PCPlusE_out, s_ALUResultE, s_WriteDataE, s_PCTargetE : std_logic_vector(31 downto 0);
-  signal s_SELMux : std_logic;
+  signal s_PCSrcE : std_logic;
 
   -- MEMORY (MEM)
   signal s_RegWriteM, s_MemWriteM : std_logic;
@@ -65,13 +74,32 @@ architecture rtl of cpu is
 
 
 begin
+  HU : entity work.hazard_unit port map(
+  Rs1D   => s_Rs1D,
+  Rs2D   => s_Rs2D,
+  StallF => s_StallF,
+  StallD => s_StallD,
+  FlushD => s_FlushD,
+  RdM    => s_RdM,
+  RegWriteM => s_RegWriteM,
+  RdE       => s_RdE,
+  Rs1E       => s_Rs1E,
+  Rs2E       => s_Rs2E,
+  FlushE     => s_FlushE,
+  ResultSrcE0 => s_ResultSrcE0,
+  PCSrcE   => s_PCSrcE,
+  RdW     => s_RdW,
+  RegWriteW  => s_RegWriteW,
+  ForwardAE => s_ForwardAE,
+  ForwardBE => s_ForwardBE
+  );
 
   -- ESTÁGIO 1: INSTRUCTION FETCH (IF)
   IF_STG: entity work.if_stage port map(
     clk         => clk,
     rst         => rst,
-    we          => s_pipeline_we,
-    PCSrcE      => s_SELMux,
+    StallF      => s_StallF,
+    PCSrcE      => s_PCSrcE,
     PCTargetE   => s_PCTargetE,
     PCPlus4F    => s_PCPlus4F,
     PCF         => s_PCF,
@@ -82,7 +110,8 @@ begin
   IF_ID_REG: entity work.if_id port map(
     clk        => clk,
     rst        => rst,
-    we         => s_pipeline_we,
+    StallD     => s_StallD,
+    FlushD     => s_FlushD,
     InstrF     => s_InstrF,
     InstrD     => s_InstrD,
     PCF        => s_PCF,
@@ -115,14 +144,22 @@ begin
     RD2D         => s_RD2D,
     PCD_out      => s_PCD_out,
     PCPlus4D_out => s_PCPlus4D_out,
-    RdD          => s_RdD
+    RdD          => s_RdD,
+    Rs1D         => s_Rs1D,
+    Rs2D         => s_Rs2D
   );
 
   -- [Esteira ID/EX]
   ID_EX_REG: entity work.id_ex port map(
     clk          => clk,
     rst          => rst,
-    we           => s_pipeline_we,
+    FlushE           => s_FlushE,
+    Rs1D => s_Rs1D,
+    Rs2D => s_Rs2D,
+
+    Rs1E => s_Rs1E,
+    Rs2E => s_Rs2E,
+
     RegWriteD    => s_RegWriteD,    RegWriteE    => s_RegWriteE,
     ResultSrcD   => s_ResultSrcD,   ResultSrcE   => s_ResultSrcE,
     MemWriteD    => s_MemWriteD,    MemWriteE    => s_MemWriteE,
@@ -156,14 +193,18 @@ begin
     PCE            => s_PCE,
     ImmExtE        => s_ImmExtE,
     PCTargetE      => s_PCTargetE,
-    SELMux         => s_SELMux
+    PCSrcE           => s_PCSrcE,
+    ForwardAE       => s_ForwardAE,
+    ForwardBE       => s_ForwardBE,
+    ResultW  => s_ResultW,
+    ALUResultM => s_ALUResultM,
+    ResultSrcE0    => s_ResultSrcE0
   );
 
   -- [Esteira EX/MEM]
   EX_MEM_REG: entity work.ex_mem port map(
     clk          => clk,
     rst          => rst,
-    we           => s_pipeline_we,
     RegWriteE    => s_RegWriteE_out,   RegWriteM  => s_RegWriteM,
     ResultSrcE   => s_ResultSrcE_out,  ResultSrcM => s_ResultSrcM,
     MemWriteE    => s_MemWriteE_out,   MemWriteM  => s_MemWriteM,
@@ -191,7 +232,6 @@ begin
   MEM_WB_REG: entity work.mem_wb port map(
     clk          => clk,
     rst          => rst,
-    we           => s_pipeline_we,
     RegWriteM    => s_RegWriteM_out,   RegWriteW  => s_RegWriteW,
     ResultSrcM   => s_ResultSrcM_out,  ResultSrcW => s_ResultSrcW,
     RdM          => s_RdM_out,         RdW        => s_RdW,

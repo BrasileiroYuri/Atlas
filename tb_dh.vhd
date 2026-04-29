@@ -1,11 +1,12 @@
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity tb_cpu2 is
-end entity tb_cpu2;
+entity tb_dh is
+end entity tb_dh;
 
-architecture rtl of tb_cpu2 is
+architecture rtl of tb_dh is
     signal tb_clk, tb_rst : std_logic := '0';
     signal s_RdW          : std_logic_vector(4 downto 0) := "00000";
     signal s_ResultW      : std_logic_vector(31 downto 0);
@@ -30,8 +31,6 @@ test_proc : process
     variable found_1 : boolean := false;
     variable found_2 : boolean := false;
     variable found_3 : boolean := false;
-    variable found_4 : boolean := false;
-    variable found_5 : boolean := false;
 begin
  tb_rst <= '1';
     wait until rising_edge(tb_clk);
@@ -48,35 +47,24 @@ begin
         severity note;
 
         -- Captura no ciclo exato em que o WB produz resultado
-        if s_RdW = "00011" and s_ResultW = x"00000003" then
-            report "PASS: ADD x3,x1,x2 = 3 no ciclo " & integer'image(i)
+        if s_RdW = "00011" and s_ResultW = x"00000001" then
+            report "PASS: ADD x3, x1, x0 - ciclo " & integer'image(i)
             severity note;
             found_1 := true;
         end if;
 
-        if s_RdW = "00110" and s_ResultW = x"00000001" then
-            report "PASS: SUB x6,x5,x4 = 1 no ciclo " & integer'image(i)
+        if s_RdW = "00100" and s_ResultW = x"00000002" then
+            report "PASS: ADD x4, x3, x3 - ciclo " & integer'image(i)
             severity note;
             found_2 := true;
         end if;
 
-        if s_RdW = "01111" and s_ResultW = x"00000002" then
-            report "PASS: NOT x15 x7 = 2 no ciclo " & integer'image(i)
+        if s_RdW = "00101" and s_ResultW = x"00000004" then
+            report "PASS: ADD x5, x4, x4 - ciclo " & integer'image(i)
             severity note;
             found_3 := true;
         end if;
 
-        if s_RdW = "01001" and s_ResultW = x"00000001" then
-            report "PASS: AND x9 x1 x8 = 1 no ciclo " & integer'image(i)
-            severity note;
-            found_4 := true;
-        end if;
-
-        if s_RdW = "01011" and s_ResultW = x"00000003" then
-            report "PASS: OR x11 x1 x8 = 3 no ciclo " & integer'image(i)
-            severity note;
-            found_5 := true;
-        end if;
     end loop;
 
     assert found_1
@@ -91,13 +79,6 @@ begin
         report "FALHA: resultado correto nunca apareceu no WB 3"
         severity error;
 
-    assert found_4
-        report "FALHA: resultado correto nunca apareceu no WB 4"
-        severity error;
-
-    assert found_5
-        report "FALHA: resultado correto nunca apareceu no WB 5"
-        severity error;
     report "=== FIM ===" severity note;
     wait;
 end process;

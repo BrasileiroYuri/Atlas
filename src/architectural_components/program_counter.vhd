@@ -4,8 +4,8 @@ use IEEE.numeric_std.all;
 
 entity program_counter is
   port (
-    clk, rst      : in  std_logic;
-    we       : in  std_logic;
+    clk, rst : in  std_logic;
+    StallF       : in  std_logic;
 
     PCF_in  : in  std_logic_vector(31 downto 0);
     PCF_out : out std_logic_vector(31 downto 0)
@@ -21,7 +21,7 @@ begin
     if rising_edge(clk) then
       if rst = '1' then
         mem <= (others => '0');
-      elsif we = '1' then
+      elsif StallF = '0' then
         mem <= PCF_in;
       end if;
     end if;
