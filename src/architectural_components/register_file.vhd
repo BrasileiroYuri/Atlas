@@ -19,10 +19,8 @@ end entity;
 architecture rtl of register_file is
   type memory_t is array (0 to 31) of std_logic_vector(31 downto 0);
   
-  -- Memória de registradores genérica, inicializada a zero.
   signal mem : memory_t := (others => (others => '0'));
 begin
-  -- READ (combinational) - O registrador 0 (x0) retorna sempre 0, independentemente da memória
   Out1 <= (others => '0') when R1 = "00000" else
             in_data when (we = '1' and R1 = in_addr) else
             mem(to_integer(unsigned(R1)));
