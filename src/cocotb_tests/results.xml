@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1777749537" />
+    <testcase name="test_atlas_pipeline" classname="tb_atlas" file="/home/luanzd/Projects/Atlas/src/cocotb_tests/tb_atlas.py" lineno="85" time="0.005934238433837891" sim_time_ns="240.0" ratio_time="40443.26878264363" />
+  </testsuite>
+</testsuites>
