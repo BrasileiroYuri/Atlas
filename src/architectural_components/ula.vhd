@@ -37,6 +37,12 @@ begin
         else
           result_internal <= x"00000000";
         end if;
+      when "110" => --JN pass
+      if signed(SrcAE) < signed(SrcBE) then
+                result_internal <= x"00000000"; 
+              else
+                result_internal <= x"00000001";
+              end if;
       when "111" => -- NOT
         result_internal <= not SrcAE;
       when others =>

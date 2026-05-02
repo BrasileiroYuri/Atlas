@@ -25,7 +25,11 @@ begin
         ALUControl <= "000";
 
       when "01" =>
-        ALUControl <= "001";
+      case funct3 is
+        when "000" => ALUControl <= "001"; -- BEQ/JZ (Faz SUB normal)
+        when "100" => ALUControl <= "110"; -- BLT/JN (Código especial customizado)
+        when others => ALUControl <= "001";
+        end case;
 
       when "10" =>
         case funct3 is
