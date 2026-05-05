@@ -13,10 +13,12 @@ end entity data_memory;
 architecture rtl of data_memory is
   type memory_t is array (0 to 31) of std_logic_vector(31 downto 0);
 
-  -- Memória RAM totalmente limpa
+  -- Memória RAM
   signal mem : memory_t := (
-      0      => x"0000000F",
-      1      => x"0000000A",
+      0      => x"0000000A", -- RAM[0]  = 10
+      1      => x"00000005", -- RAM[4]  = 5
+      2      => x"FFFFFFFB", -- RAM[8]  = -5 (Para o teste do JN)
+      3      => x"00000000", -- RAM[12] = 0 (Endereço Alvo)
       others => (others => '0')
     );
 
@@ -24,9 +26,7 @@ begin
   process(clk)
   begin
     if rising_edge(clk) then
-      if rst = '1' then
-        mem <= (others => (others => '0')); -- Opcional: Zera a RAM no reset
-      elsif MemWriteM = '1' then
+      if MemWriteM = '1' then
         mem(to_integer(unsigned(addr(6 downto 2)))) <= input;  -- Escrita
       end if;
     end if;

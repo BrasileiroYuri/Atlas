@@ -1,61 +1,61 @@
 v 4
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../hazard_handlers/hazard_unit.vhd" "dc93a37357f05258d99122e7eac9ad4698c8a8d2" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../hazard_handlers/hazard_unit.vhd" "dc93a37357f05258d99122e7eac9ad4698c8a8d2" "20260505012925.672":
   entity hazard_unit at 1( 0) + 0 on 11;
   architecture rtl of hazard_unit at 34( 813) + 0 on 12;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../control/main_dec.vhd" "36d77586c475b4bf613e258af9d2a6973e5f6589" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../control/main_dec.vhd" "36d77586c475b4bf613e258af9d2a6973e5f6589" "20260505012925.672":
   entity maindec at 1( 0) + 0 on 21;
   architecture rtl of maindec at 19( 452) + 0 on 22;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../control/alu_decoder.vhd" "96fa470f14bb9f0bc9972a3762fbc570403543f8" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../control/alu_decoder.vhd" "96fa470f14bb9f0bc9972a3762fbc570403543f8" "20260505012925.672":
   entity aludec at 1( 0) + 0 on 23;
   architecture rtl of aludec at 15( 312) + 0 on 24;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../control/control_unit.vhd" "d0d5dcb1d50a4498c88c2a898659fcabe96d570b" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../control/control_unit.vhd" "d0d5dcb1d50a4498c88c2a898659fcabe96d570b" "20260505012925.672":
   entity control_unit at 1( 0) + 0 on 25;
   architecture struct of control_unit at 23( 720) + 0 on 26;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../memory/instruction_memory.vhd" "6cdd1028e114d6b8abb07c594c4eef9d79d8667b" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../memory/instruction_memory.vhd" "1ef93b1b336924e6c7898cd35360d3dbddc0bae6" "20260505012925.672":
   entity instruction_memory at 1( 0) + 0 on 15;
   architecture rtl of instruction_memory at 12( 236) + 0 on 16;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../memory/data_memory.vhd" "fa1e760430f31986768cf0a2eb0d71031deb8b0a" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../memory/data_memory.vhd" "7b791f48f1c58dab66068180c486da1e0737ffc7" "20260505012925.672":
   entity data_memory at 1( 0) + 0 on 41;
   architecture rtl of data_memory at 13( 270) + 0 on 42;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/program_counter.vhd" "5a59828604bcd8c2ad5057587c60e9f3a15f6544" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/program_counter.vhd" "5a59828604bcd8c2ad5057587c60e9f3a15f6544" "20260505012925.672":
   entity program_counter at 1( 0) + 0 on 13;
   architecture rtl of program_counter at 15( 301) + 0 on 14;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/register_file.vhd" "fd3d4ae8eefb22967bbb84dd5b3088fd463e864d" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/register_file.vhd" "0ed21e7cdec9982637f25489fa85b337f6ddc4f1" "20260505012925.672":
   entity register_file at 1( 0) + 0 on 27;
   architecture rtl of register_file at 19( 533) + 0 on 28;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/se_unit.vhd" "4bc47edb4c33fb854ab016578c9a3ca9b4420d9c" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/se_unit.vhd" "4bc47edb4c33fb854ab016578c9a3ca9b4420d9c" "20260505012925.672":
   entity se_unit at 1( 0) + 0 on 29;
   architecture rtl of se_unit at 12( 245) + 0 on 30;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/ula.vhd" "429117e772c6d842ca3f5043079ca3bac2d35e2b" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../architectural_components/ula.vhd" "429117e772c6d842ca3f5043079ca3bac2d35e2b" "20260505012925.672":
   entity ula at 1( 0) + 0 on 35;
   architecture rtl of ula at 17( 351) + 0 on 36;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/if_id.vhd" "9c78d38bc50f3b786e20510ac4d9ba02534d4014" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/if_id.vhd" "9c78d38bc50f3b786e20510ac4d9ba02534d4014" "20260505012925.672":
   entity if_id at 1( 0) + 0 on 19;
   architecture rtl of if_id at 23( 506) + 0 on 20;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/id_ex.vhd" "19ed37c1ae716ceaf7570a3485aba08982ac183b" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/id_ex.vhd" "19ed37c1ae716ceaf7570a3485aba08982ac183b" "20260505012925.672":
   entity id_ex at 1( 0) + 0 on 33;
   architecture rtl of id_ex at 62( 1462) + 0 on 34;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/ex_mem.vhd" "d7e2d7a68b30431d973f005dd145e340edb71774" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/ex_mem.vhd" "d7e2d7a68b30431d973f005dd145e340edb71774" "20260505012925.672":
   entity ex_mem at 1( 0) + 0 on 39;
   architecture rtl of ex_mem at 30( 736) + 0 on 40;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/mem_wb.vhd" "ece3746ec033c95ca1d15c97c4890021d489cf76" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../pipeline_registers/mem_wb.vhd" "ece3746ec033c95ca1d15c97c4890021d489cf76" "20260505012925.672":
   entity mem_wb at 1( 0) + 0 on 45;
   architecture rtl of mem_wb at 30( 681) + 0 on 46;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/if_stage.vhd" "2fd943334c4a5ebbfc0ee446500974f6733b61dd" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/if_stage.vhd" "2fd943334c4a5ebbfc0ee446500974f6733b61dd" "20260505012925.672":
   entity if_stage at 1( 0) + 0 on 17;
   architecture rtl of if_stage at 18( 494) + 0 on 18;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/id_stage.vhd" "c74e66136e5f8da50f3e7e123d30d9549c7a869e" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/id_stage.vhd" "c74e66136e5f8da50f3e7e123d30d9549c7a869e" "20260505012925.672":
   entity id_stage at 1( 0) + 0 on 31;
   architecture rtl of id_stage at 44( 1289) + 0 on 32;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/ex_stage.vhd" "a55607309700eccb3cb82d75710122d1a681ef96" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/ex_stage.vhd" "a55607309700eccb3cb82d75710122d1a681ef96" "20260505012925.672":
   entity ex_stage at 1( 0) + 0 on 37;
   architecture rtl of ex_stage at 54( 1482) + 0 on 38;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/mem_stage.vhd" "1d99163d9f7c7c1a2f7c609d8a7815fb627fd8da" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/mem_stage.vhd" "1d99163d9f7c7c1a2f7c609d8a7815fb627fd8da" "20260505012925.672":
   entity mem_stage at 1( 0) + 0 on 43;
   architecture rtl of mem_stage at 33( 879) + 0 on 44;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/wb_stage.vhd" "3ac685c4a36b22ef6d566a3a9fc0c179fb8e46dd" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../stages/wb_stage.vhd" "3ac685c4a36b22ef6d566a3a9fc0c179fb8e46dd" "20260505012925.672":
   entity wb_stage at 1( 0) + 0 on 47;
   architecture rtl of wb_stage at 21( 537) + 0 on 48;
-file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../cpu.vhd" "bb4ea8dff80466568fb026bc00829d05a1c81937" "20260502191856.909":
+file / "/home/luanzd/Projects/Atlas/src/cocotb_tests/../cpu.vhd" "bb4ea8dff80466568fb026bc00829d05a1c81937" "20260505012925.672":
   entity cpu at 1( 0) + 0 on 49;
   architecture rtl of cpu at 13( 236) + 0 on 50;

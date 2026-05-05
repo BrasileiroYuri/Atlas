@@ -4,21 +4,15 @@ from cocotb.triggers import ReadOnly, RisingEdge, Timer
 from cocotb.utils import get_sim_time
 
 # ==============================================================================
-# 🛠️ ALTERE AQUI PARA TESTAR NOVOS PROGRAMAS VHDL
+# 🛠️ TESTE DE PROGRAMA VHDL
 # ==============================================================================
 # 1. Quantos ciclos de clock a simulação deve rodar para o programa terminar?
 MAX_CICLOS = 25
-
-# 2. Quais memórias e registradores deseja exibir no terminal?
-MONITOR_RAM = [0, 4, 8]
-MONITOR_REGS = [1, 2, 3, 4, 5, 6, 7, 8]
-
-# 3. Estado inicial da RAM (para exibição correta no ciclo 0)
-RAM_INICIAL = {0: 15, 4: 10, 8: 0}
-
-# 4. Condição de Sucesso (O que o teste deve validar no final?)
-ENDERECO_ALVO = 8
-VALOR_ESPERADO = 25
+MONITOR_RAM = [0, 4, 8, 12]
+MONITOR_REGS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+RAM_INICIAL = {0: 10, 4: 5, 8: -5, 12: 0}
+ENDERECO_ALVO = 12
+VALOR_ESPERADO = 10
 # ==============================================================================
 
 

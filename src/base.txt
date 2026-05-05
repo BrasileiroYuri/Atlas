@@ -1,0 +1,116 @@
+================================================================================
+          ARQUITETURA ATLAS RISC-V (RV32I) - MAPA DE INSTRUÇÕES
+================================================================================
+
+1. OPCODES (bits 6:0)
+--------------------------------------------------------------------------------
+O Opcode define o "Formato" geral da instrução que a CPU vai executar.
+
+0110011 -> Matemática entre Registradores (ADD, SUB, CMP, AND, OR, XOR)
+0000011 -> Leitura da Memória (LD)
+0010011 -> Matemática com Imediato (Usado pelo NOT)
+0100011 -> Escrita na Memória (ST)
+1100011 -> Saltos Condicionais (JZ, JN)
+1101111 -> Salto Incondicional (J)
+
+
+2. FUNCT3 (bits 14:12) E FUNCT7 (bits 31:25)
+--------------------------------------------------------------------------------
+Os "Modificadores" detalham a operação específica para a ULA ou Memória.
+
+> Matemática (Opcode: 0110011):
+  - ADD : funct3 = 000 | funct7 = 0000000
+  - SUB : funct3 = 000 | funct7 = 0100000
+  - CMP : funct3 = 000 | funct7 = 0100000 (Usa a mesma lógica do SUB)
+  - AND : funct3 = 111 | funct7 = 0000000
+  - OR  : funct3 = 110 | funct7 = 0000000
+  - XOR : funct3 = 100 | funct7 = 0000000
+
+> Outras Operações:
+  - LD  : funct3 = 010 (Opcode: 0000011 - Acesso a Word/32 bits)
+  - ST  : funct3 = 010 (Opcode: 0100011 - Acesso a Word/32 bits)
+  - NOT : funct3 = 100 (Opcode: 0010011 - Implementado via XORI)
+  - JZ  : funct3 = 000 (Opcode: 1100011 - Equivalente ao BEQ)
+  - JN  : funct3 = 100 (Opcode: 1100011 - Equivalente ao BLT)
+
+
+3. REGISTRADORES (rs1, rs2, rd)
+--------------------------------------------------------------------------------
+Endereços de 5 bits para o Register File (32 gavetas).
+
+x0  = 00000 (Zero Hardwired)
+x1  = 00001
+x2  = 00010
+x3  = 00011
+x4  = 00100
+x5  = 00101
+x6  = 00110
+x7  = 00111
+...
+x31 = 11111
+
+
+4. FORMATOS DE INSTRUÇÃO RISC-V UTILIZADOS
+--------------------------------------------------------------------------------
+Guia para montagem manual de código binário ou hexadecimal.
+
+[TIPO-R] Operações Lógicas e Aritméticas (ADD, SUB, CMP, AND, OR, XOR)
+Formato: funct7 (7) | rs2 (5) | rs1 (5) | funct3 (3) | rd (5) | opcode (7)
+
+[TIPO-I] Load Word (LD)
+Formato: imm_11:0 (12) | rs1 (5) | funct3 (3) | rd (5) | opcode (7)
+
+[TIPO-I] Especial (NOT / XORI)
+Formato: 111111111111 (12) | rs1 (5) | 100 (3) | rd (5) | 0010011 (7)
+Nota: O Imediato é sempre -1 (tudo a 1).
+
+[TIPO-S] Store Word (ST)
+Formato: imm_11:5 (7) | rs2 (5) | rs1 (5) | funct3 (3) | imm_4:0 (5) | opcode (7)
+
+[TIPO-B] Branches Condicionais (JZ, JN)
+Formato: imm_12 (1) | imm_10:5 (6) | rs2 (5) | rs1 (5) | funct3 (3) | imm_4:1 (4) | imm_11 (1) | opcode (7)
+
+[TIPO-J] Jump (J / JAL)
+Formato: imm_20 (1) | imm_10:1 (10) | imm_11 (1) | imm_19:12 (8) | rd (5) | opcode (7)
+================================================================================
+
+-- =========================================================================================
+-- BIBLIOTECA DE INSTRUÇÕES BINÁRIAS (VHDL-2008)
+-- Formatos separados por _ para fácil leitura e edição.
+-- =========================================================================================
+
+-- 🔹 TIPO-R: [funct7] _ [rs2] _ [rs1] _ [funct3] _ [rd] _ [opcode]
+-- Usa os registradores x1, x2 e guarda no x3.
+b"0000000_00010_00001_000_00011_0110011", -- ADD x3, x1, x2
+b"0100000_00010_00001_000_00011_0110011", -- SUB x3, x1, x2 (O mesmo para CMP)
+b"0000000_00010_00001_111_00011_0110011", -- AND x3, x1, x2
+b"0000000_00010_00001_110_00011_0110011", -- OR  x3, x1, x2
+b"0000000_00010_00001_100_00011_0110011", -- XOR x3, x1, x2
+
+-- 🔹 TIPO-I (LOAD): [imediato_12bits] _ [rs1] _ [funct3] _ [rd] _ [opcode]
+-- Carrega da RAM baseada em x0.
+b"000000000000_00000_010_00001_0000011", -- LD x1, 0(x0)
+b"000000000100_00000_010_00010_0000011", -- LD x2, 4(x0)
+b"000000001000_00000_010_00011_0000011", -- LD x3, 8(x0)
+
+-- 🔹 TIPO-I ESPECIAL (NOT): [111111111111] _ [rs1] _ [100] _ [rd] _ [0010011]
+-- Faz o NOT do x1 e guarda no x2. O imediato é sempre -1 (tudo 1s).
+b"111111111111_00001_100_00010_0010011", -- NOT x2, x1
+
+-- 🔹 TIPO-S (STORE): [imm_7_altos] _ [rs2] _ [rs1] _ [funct3] _ [imm_5_baixos] _ [opcode]
+-- Guarda o x1 na RAM baseada em x0.
+b"0000000_00001_00000_010_00000_0100011", -- ST x1, 0(x0)
+b"0000000_00001_00000_010_00100_0100011", -- ST x1, 4(x0)
+b"0000000_00001_00000_010_01000_0100011", -- ST x1, 8(x0)
+
+-- 🔹 TIPO-B (BRANCH): [imm_12] _ [imm_10:5] _ [rs2] _ [rs1] _ [funct3] _ [imm_4:1] _ [imm_11] _ [opcode]
+-- Verifica o x1 contra o x0 (zero). Exemplo de saltos curtos para a frente (+4, +8, +12).
+b"0_000000_00000_00001_000_0010_0_1100011", -- JZ x1, +4
+b"0_000000_00000_00001_000_0100_0_1100011", -- JZ x1, +8
+b"0_000000_00000_00001_100_0100_0_1100011", -- JN x1, +8
+b"0_000000_00000_00001_100_0110_0_1100011", -- JN x1, +12
+
+-- 🔹 TIPO-J (JUMP): [imm_20] _ [imm_10:1] _ [imm_11] _ [imm_19:12] _ [rd] _ [opcode]
+-- Salto incondicional que não guarda endereço de retorno (rd = x0).
+b"0_0000000100_0_00000000_00000_1101111", -- J +8  (Pula 2 instruções p/ frente)
+b"0_0000001000_0_00000000_00000_1101111", -- J +16 (Pula 4 instruções p/ frente)
